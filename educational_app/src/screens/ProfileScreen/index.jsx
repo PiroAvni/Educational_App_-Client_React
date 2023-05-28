@@ -4,7 +4,7 @@ import { Form, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import FormContainer from '../../components/FormContainer/index';
 import { toast } from 'react-toastify';
-// import Loader from '../components';
+import Loader from '../../components/Loader';
 import { useUpdateUserMutation } from '../../slices/usersApiSlice/usersApiSlice';
 import { setCredentials } from '../../slices/authSlice/authSlice';
 
