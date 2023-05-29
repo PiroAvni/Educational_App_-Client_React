@@ -1,14 +1,22 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import FlashcardList from "../../components/FlashCardList/index";
+import Deck from'../../components/Deck/index';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import "./style.css";
 import axios from "axios";
 
 function DashBroad() {
+  const { userInfo } = useSelector((state) => state.auth);
+
   const [flashcards, setFlashcards] = useState([]);
   const [categories, setCategories] = useState([]);
 
   const categoryEl = useRef();
   const amountEl = useRef();
+
+const userName="Avni"
+
 
   useEffect(() => {
     axios.get("https://opentdb.com/api_category.php").then((res) => {
@@ -54,6 +62,16 @@ function DashBroad() {
 
   return (
     <>
+<div>
+  <h1 className="" id='name'> Welcome {userName} </h1>
+</div>
+
+
+
+
+
+
+
       <form className="header" onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="category">Category</label>
@@ -84,6 +102,7 @@ function DashBroad() {
       </form>
       <div className="container">
         <FlashcardList flashcards={flashcards} />
+        <Deck/>
       </div>
     </>
   );

@@ -4,6 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {Header} from './components';
 import { DashBroad } from './screens';
+import './App.css'
 
 const App = () => {
   return (

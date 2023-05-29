@@ -3,9 +3,11 @@ import { FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import logo from '../../../public/image/logo1.png'
 import { useLogoutMutation } from '../../slices/usersApiSlice/usersApiSlice';
 import { logout } from '../../slices/authSlice/authSlice';
 
+import "./style.css"
 const Header = () => {
   const { userInfo } = useSelector((state) => state.auth);
 
@@ -29,7 +31,7 @@ const Header = () => {
       <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
         <Container>
           <LinkContainer to='/'>
-            <Navbar.Brand>  LOGO </Navbar.Brand>
+            <Navbar.Brand> <img className="logo"  src={logo} alt="logo"/></Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
