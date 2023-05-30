@@ -1,7 +1,14 @@
 import { Container, Card, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import logo from '../../../public/image/logo1.png'
+
 import './sytle.css'
 const Hero = () => {
+
+  const navigate = useNavigate();
+ const handleGetStarted=() => {
+  navigate('/login')
+ }
   return (
     <div className=' py-5 hero'>
       <Container className='d-flex justify-content-center hero-container'>
@@ -15,7 +22,7 @@ const Hero = () => {
             Create and Personalise your revision FlashCards.
           </p>
           <div className='d-flex'>
-            <Button  href='/login' className='me-3 hero-btn'>
+            <Button onClick={handleGetStarted} className='me-3 hero-btn'>
               Get Started
             </Button>
             
