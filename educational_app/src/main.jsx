@@ -12,7 +12,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import store from './store';
 import { Provider } from 'react-redux';
 
-import {HomeScreen, ProfileScreen, LoginAndRegisterScreen} from './screens';
+import {HomeScreen, ProfileScreen, LoginAndRegisterScreen, DashBroad} from './screens';
 
 import PrivateRoute from './components/PrivateRoute/index';
 
@@ -24,8 +24,8 @@ const router = createBrowserRouter(
       {/* <Route path='/register' element={<RegisterScreen />} /> */}
       <Route path='' element={<PrivateRoute />}>
         <Route path='/profile' element={<ProfileScreen />} />
-        {/* <Route path='/deck' element={<deckScreen />} /> */}
-      </Route>
+          <Route path='/dashbroad' element={<DashBroad />} /> 
+      </Route> 
     </Route>
   )
 );

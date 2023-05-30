@@ -22,16 +22,20 @@ const LoginScreen = () => {
 
   useEffect(() => {
     if (userInfo) {
-      navigate('/')
+
+      navigate('');
+
     }
   }, [navigate, userInfo])
 
   const submitHandler = async (e) => {
     e.preventDefault()
     try {
-      const res = await login({ email, password }).unwrap()
-      dispatch(setCredentials({ ...res }))
-      navigate('/')
+
+      const res = await login({ email, password }).unwrap();
+      dispatch(setCredentials({ ...res }));
+      navigate('');
+
     } catch (err) {
       toast.error(err?.data?.message || err.error)
     }
