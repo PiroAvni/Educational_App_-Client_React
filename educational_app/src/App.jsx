@@ -1,9 +1,9 @@
-import { Container } from 'react-bootstrap';
-import { Outlet } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import {Header} from './components';
-import { DashBroad } from './screens';
+import { Container } from 'react-bootstrap'
+import { Outlet } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { Header } from './components'
+import { DashBroad } from './screens'
 import './App.css'
 
 const App = () => {
@@ -11,12 +11,12 @@ const App = () => {
     <>
       <Header />
       <ToastContainer />
-      <DashBroad/>
+      <DashBroad />
       <Container className='my-2'>
         <Outlet />
       </Container>
     </>
-  );
-};
+  )
+}
 
-export default App;
+export default App
