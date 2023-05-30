@@ -1,46 +1,49 @@
-import { useState, useEffect } from 'react';
-import { Form, Button, Row, Col } from 'react-bootstrap';
-import {FormContainer, Loader} from '../../components';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { useRegisterMutation } from '../../slices/usersApiSlice/usersApiSlice';
-import { setCredentials } from '../../slices/authSlice/authSlice';
-import { toast } from 'react-toastify';
+import { useState, useEffect } from 'react'
+import { Form, Button, Row, Col } from 'react-bootstrap'
+import { FormContainer, Loader } from '../../components'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { useRegisterMutation } from '../../slices/usersApiSlice/usersApiSlice'
+import { setCredentials } from '../../slices/authSlice/authSlice'
+import { toast } from 'react-toastify'
+import { InputBox } from '../../components'
 
 const RegisterScreen = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
-  const [register, { isLoading }] = useRegisterMutation();
+  const [register, { isLoading }] = useRegisterMutation()
 
-  const { userInfo } = useSelector((state) => state.auth);
+  const { userInfo } = useSelector((state) => state.auth)
 
   useEffect(() => {
     if (userInfo) {
+
       navigate('/dashbroad');
+
     }
-  }, [navigate, userInfo]);
+  }, [navigate, userInfo])
 
   const submitHandler = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     if (password !== confirmPassword) {
-      toast.error('Passwords do not match');
+      toast.error('Passwords do not match')
     } else {
       try {
-        const res = await register({ name, email, password }).unwrap();
-        dispatch(setCredentials({ ...res }));
-        navigate(redirect);
+        const res = await register({ name, email, password }).unwrap()
+        dispatch(setCredentials({ ...res }))
+        navigate(redirect)
       } catch (err) {
-        toast.error(err?.data?.message || err.error);
+        toast.error(err?.data?.message || err.error)
       }
     }
-  };
+  }
   return (
     <FormContainer>
       <h1>Register</h1>
@@ -67,21 +70,21 @@ const RegisterScreen = () => {
 
         <Form.Group className='my-2' controlId='password'>
           <Form.Label>Password</Form.Label>
-          <Form.Control
+          <InputBox
             type='password'
             placeholder='Enter password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-          ></Form.Control>
+          ></InputBox>
         </Form.Group>
         <Form.Group className='my-2' controlId='confirmPassword'>
           <Form.Label>Confirm Password</Form.Label>
-          <Form.Control
+          <InputBox
             type='password'
             placeholder='Confirm password'
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-          ></Form.Control>
+          ></InputBox>
         </Form.Group>
 
         <Button type='submit' variant='primary' className='mt-3'>
@@ -97,7 +100,7 @@ const RegisterScreen = () => {
         </Col>
       </Row>
     </FormContainer>
-  );
-};
+  )
+}
 
-export default RegisterScreen;
+export default RegisterScreen

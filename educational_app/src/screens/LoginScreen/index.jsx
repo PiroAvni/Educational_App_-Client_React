@@ -1,40 +1,45 @@
-import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { Form, Button, Row, Col } from 'react-bootstrap';
-import FormContainer from '../../components/FormContainer/index';
-import { useDispatch, useSelector } from 'react-redux';
-import { useLoginMutation } from '../../slices/usersApiSlice/usersApiSlice';
-import { setCredentials } from '../../slices/authSlice/authSlice';
-import { toast } from 'react-toastify';
+import { useState, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { Form, Button, Row, Col } from 'react-bootstrap'
+import FormContainer from '../../components/FormContainer/index'
+import { useDispatch, useSelector } from 'react-redux'
+import { useLoginMutation } from '../../slices/usersApiSlice/usersApiSlice'
+import { setCredentials } from '../../slices/authSlice/authSlice'
+import { toast } from 'react-toastify'
+import { InputBox } from '../../components'
 // import Loader from '../../components';
 
 const LoginScreen = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
-  const [login, { isLoading }] = useLoginMutation();
+  const [login, { isLoading }] = useLoginMutation()
 
-  const { userInfo } = useSelector((state) => state.auth);
+  const { userInfo } = useSelector((state) => state.auth)
 
   useEffect(() => {
     if (userInfo) {
+
       navigate('');
+
     }
-  }, [navigate, userInfo]);
+  }, [navigate, userInfo])
 
   const submitHandler = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
+
       const res = await login({ email, password }).unwrap();
       dispatch(setCredentials({ ...res }));
       navigate('');
+
     } catch (err) {
-      toast.error(err?.data?.message || err.error);
+      toast.error(err?.data?.message || err.error)
     }
-  };
+  }
 
   return (
     <FormContainer>
@@ -53,12 +58,12 @@ const LoginScreen = () => {
 
         <Form.Group className='my-2' controlId='password'>
           <Form.Label>Password</Form.Label>
-          <Form.Control
-            type='password'
+          <InputBox
+            type='null'
             placeholder='Enter password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-          ></Form.Control>
+          ></InputBox>
         </Form.Group>
 
         <Button
@@ -80,7 +85,7 @@ const LoginScreen = () => {
         </Col>
       </Row>
     </FormContainer>
-  );
-};
+  )
+}
 
-export default LoginScreen;
+export default LoginScreen
