@@ -25,7 +25,7 @@ const router = createBrowserRouter(
       <Route path='' element={<PrivateRoute />}>
         <Route path='/profile' element={<ProfileScreen />} />
           <Route path='/dashboard' element={<DashBoard />} /> 
-          {/* <Route path='/add-cards' element={<AddFlashCardScreen />} />  */}
+          <Route path='/add-cards' element={<AddFlashCardScreen />} /> 
           <Route path='/flashcard/:id' element={<FlashCards />} /> 
       </Route> 
     </Route>
