@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import FlashcardList from "../../components/FlashCardList/index";
+
 import Deck from'../../components/Deck/index';
 import { useSelector, useDispatch } from 'react-redux';
 import { TbMathSymbols } from 'react-icons/tb';
@@ -10,9 +10,10 @@ import "./style.css";
 import axios from "axios";
 
 function DashBoard() {
-  const { userInfo } = useSelector((state) => state.auth);
+  const { userInfo } = useSelector((state) => state.auth)
 
-  const category=  [{id: 1,title: "Maths", img :<TbMathSymbols/>},{id: 2,title: "Science", img :<TbMathSymbols/>}
+  const category=  [
+    {id: 1,title: "Maths", img :<TbMathSymbols/>},{id: 2,title: "Science", img :<TbMathSymbols/>}
 ] 
 
  
@@ -36,11 +37,10 @@ function DashBoard() {
 
 
     </>
-  );
+  )
 }
 
 export default DashBoard;
-
 
 
 
