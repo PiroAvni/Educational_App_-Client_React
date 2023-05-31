@@ -1,10 +1,10 @@
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import { FaSignInAlt, FaSignOutAlt, FaBookmark } from 'react-icons/fa';
-import {CgProfile,CgLogOut} from 'react-icons/Cg';
-import {GiProgression} from 'react-icons/Gi';
-import {TbCards} from'react-icons/Tb';
-import {GoDashboard} from'react-icons/Go';
-import {BiBookAdd} from'react-icons/Bi';
+import {CgProfile,CgLogOut} from 'react-icons/cg';
+import {GiProgression} from 'react-icons/gi';
+import {TbCards} from'react-icons/tb';
+import {GoDashboard} from'react-icons/go';
+import {BiBookAdd} from'react-icons/bi';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
