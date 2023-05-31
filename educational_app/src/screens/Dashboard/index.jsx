@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import './style.css'
 import axios from 'axios'
 
-function DashBroad() {
+function DashBoard() {
   const { userInfo } = useSelector((state) => state.auth)
 
   const [flashcards, setFlashcards] = useState([])
@@ -104,4 +104,4 @@ function DashBroad() {
   )
 }
 
-export default DashBroad
+export default DashBoard

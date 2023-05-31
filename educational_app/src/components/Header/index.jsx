@@ -1,5 +1,10 @@
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
-import { FaSignInAlt, FaSignOutAlt } from 'react-icons/fa'
+import { FaSignInAlt, FaSignOutAlt, FaBookmark } from 'react-icons/fa'
+import { CgProfile, CgLogOut } from 'react-icons/Cg'
+import { GiProgression } from 'react-icons/Gi'
+import { TbCards } from 'react-icons/Tb'
+import { GoDashboard } from 'react-icons/Go'
+import { BiBookAdd } from 'react-icons/Bi'
 import { LinkContainer } from 'react-router-bootstrap'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -41,21 +46,45 @@ const Header = () => {
               {userInfo ? (
                 <>
                   <>
-                    <LinkContainer to='/dashbroad'>
-                      <Nav.Link>DashBroad</Nav.Link>
+                    <LinkContainer to='/dashboard'>
+                      <Nav.Link>
+                        <GoDashboard /> DashBoard
+                      </Nav.Link>
                     </LinkContainer>
                     <LinkContainer to='/add-cards'>
                       <Nav.Link>
-                        <FaSignOutAlt /> Add Flashcards
+                        <BiBookAdd /> Add Flashcards
+                      </Nav.Link>
+                    </LinkContainer>
+                    <LinkContainer to='/flashcard/:id'>
+                      <Nav.Link>
+                        <TbCards /> Flashcards
                       </Nav.Link>
                     </LinkContainer>
                   </>
                   <NavDropdown title={userInfo.name} id='name'>
                     <LinkContainer to='/profile'>
-                      <NavDropdown.Item>Profile</NavDropdown.Item>
+                      <NavDropdown.Item>
+                        {' '}
+                        <CgProfile /> Profile
+                      </NavDropdown.Item>
                     </LinkContainer>
+
+                    <LinkContainer to='/'>
+                      <NavDropdown.Item>
+                        <FaBookmark />
+                        Bookmark
+                      </NavDropdown.Item>
+                    </LinkContainer>
+
+                    <LinkContainer to='/'>
+                      <NavDropdown.Item>
+                        <GiProgression /> Progress
+                      </NavDropdown.Item>
+                    </LinkContainer>
+
                     <NavDropdown.Item onClick={logoutHandler}>
-                      Logout
+                      <CgLogOut /> Logout
                     </NavDropdown.Item>
                   </NavDropdown>
                 </>

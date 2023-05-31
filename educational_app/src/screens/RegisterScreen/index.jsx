@@ -23,7 +23,7 @@ const RegisterScreen = () => {
 
   useEffect(() => {
     if (userInfo) {
-      navigate('/dashbroad')
+      navigate('/dashboard')
     }
   }, [navigate, userInfo])
 
