@@ -10,6 +10,7 @@ function LoginAndRegisterScreen() {
   const activeTabHandler = (tab) => {
     setActive(tab)
   }
+
   return (
     <div className='log-reg-container'>
       <Tabs
@@ -20,10 +21,18 @@ function LoginAndRegisterScreen() {
         activeKey={active}
         onSelect={activeTabHandler}
       >
-        <Tab className='login-tab' eventKey='login' title='Login'>
+        <Tab
+          eventKey='login'
+          title='Login'
+          className={active === 'login' ? 'active-tab' : 'inactive-tab'}
+        >
           <LoginScreen />
         </Tab>
-        <Tab className='registration-tab' eventKey='register' title='Register'>
+        <Tab
+          eventKey='register'
+          title='Register'
+          className={active === 'register' ? 'active-tab' : 'inactive-tab'}
+        >
           <RegisterScreen />
         </Tab>
       </Tabs>

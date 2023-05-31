@@ -1,7 +1,16 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@500;1000&display=swap');
 
-  text-align: center;
-  background-color: #262261
+#root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+
+  background-color: #262261;
+  height: 100vh;
+  width: 100vw;
+  font-family: 'Proza Libre', sans-serif;
+  font-weight: 900;
 }
