@@ -1,10 +1,10 @@
 import {FlashCardForm} from '../../components'
 
-const AddFlashCardScreen = () => {
+const FlashCardScreen = () => {
   
   return (
     <div><FlashCardForm/></div>
   )
 }
 
-export default AddFlashCardScreen
+export default FlashCardScreen

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { GrPrevious, GrNext } from "react-icons/Gr";
+import React, { useState } from "react";
+import { GrPrevious, GrNext } from "react-icons/gr";
 import "./style.css";
 
 const Flashcard = ({ flashcards }) => {
