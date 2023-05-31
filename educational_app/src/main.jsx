@@ -12,7 +12,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import store from './store';
 import { Provider } from 'react-redux';
 
-import {HomeScreen, ProfileScreen, LoginAndRegisterScreen, DashBoard,AddFlashCardScreen,FlashCards} from './screens';
+import {HomeScreen, ProfileScreen, LoginAndRegisterScreen, DashBoard, AddFlashCardScreen, FlashCards , RegisterScreen} from './screens';
 
 import PrivateRoute from './components/PrivateRoute/index';
 
@@ -25,7 +25,7 @@ const router = createBrowserRouter(
       <Route path='' element={<PrivateRoute />}>
         <Route path='/profile' element={<ProfileScreen />} />
           <Route path='/dashboard' element={<DashBoard />} /> 
-          <Route path='/add-cards' element={<AddFlashCardScreen />} /> 
+          {/* <Route path='/add-cards' element={<AddFlashCardScreen />} />  */}
           <Route path='/flashcard/:id' element={<FlashCards />} /> 
       </Route> 
     </Route>
