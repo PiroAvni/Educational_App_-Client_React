@@ -1,30 +1,30 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import FlashcardList from "../../components/FlashCardList/index";
-import Deck from'../../components/Deck/index';
-import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useSelector } from "react-redux";
 import "./style.css";
 import axios from "axios";
 
-function DashBroad() {
+import Deck from "../../components/Deck/index";
+
+function DashBoard() {
   const { userInfo } = useSelector((state) => state.auth);
 
   const [flashcards, setFlashcards] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [filteredCategories, setFilteredCategories] = useState([]);
 
   const categoryEl = useRef();
   const amountEl = useRef();
+  const searchEl = useRef();
 
-const userName="Avni"
-
+  const userName = "";
 
   useEffect(() => {
     axios.get("https://opentdb.com/api_category.php").then((res) => {
       setCategories(res.data.trivia_categories);
+      setFilteredCategories(res.data.trivia_categories);
     });
   }, []);
-
-  useEffect(() => {}, []);
 
   function decodeString(str) {
     const textArea = document.createElement("textarea");
@@ -60,52 +60,55 @@ const userName="Avni"
       });
   }
 
+  function handleSearch(e) {
+    const searchTerm = searchEl.current.value.toLowerCase();
+    const filteredCategories = categories.filter((category) =>
+      category.name.toLowerCase().startsWith(searchTerm)
+    );
+    setFilteredCategories(filteredCategories);
+  }
+
+  function handleCategoryClick(categoryId) {
+    categoryEl.current.value = categoryId;
+    handleSubmit(new Event("submit"));
+  }
+
   return (
     <>
-<div>
-  <h1 className="" id='name'> Welcome {userName} </h1>
-</div>
+      <div>
+        <h1 className="" id="name">
+          Welcome {userName}
+        </h1>
+      </div>
 
+      <div className="search-bar">
+        <input
+          type="text"
+          placeholder="Search category..."
+          onChange={handleSearch}
+          ref={searchEl}
+        />
+      </div>
 
-
-
-
-
-
-      <form className="header" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="category">Category</label>
-          <select id="category" ref={categoryEl}>
-            {categories.map((category) => {
-              return (
-                <option value={category.id} key={category.id}>
-                  {category.name}
-                </option>
-              );
-            })}
-          </select>
-        </div>
-        <div className="form-group">
-          <label htmlFor="amount">Number of Questions</label>
-          <input
-            type="number"
-            id="amount"
-            min="1"
-            step="1"
-            defaultValue={10}
-            ref={amountEl}
-          />
-        </div>
-        <div className="form-group">
-          <button className="btn">Generate</button>
-        </div>
-      </form>
       <div className="container">
-        <FlashcardList flashcards={flashcards} />
-        <Deck/>
+        <div className="category-cards">
+          {filteredCategories.map((category) => (
+            <Deck
+              key={category.id}
+              title={category.name}
+              onClick={() => handleCategoryClick(category.id)}
+            />
+          ))}
+        </div>
+
+        {flashcards.length > 0 && (
+          <>
+            <Quiz flashcards={flashcards} />
+          </>
+        )}
       </div>
     </>
   );
 }
 
-export default DashBroad;
+export default DashBoard;

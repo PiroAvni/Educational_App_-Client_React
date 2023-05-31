@@ -1,12 +1,14 @@
-import React from 'react'
-import Flashcard from '../FlashCard/index';
+import React from "react";
+import Flashcard from "../FlashCard/index";
 
-export default function FlashcardList({ flashcards }) {
+const FlashcardList = ({ flashcards }) => {
   return (
     <div className="card-grid">
-      {flashcards.map(flashcard => {
-        return <Flashcard flashcard={flashcard} key={flashcard.id} />
+      {flashcards.map((flashcard) => {
+        return <Flashcard flashcard={flashcard} key={flashcard.id} />;
       })}
     </div>
-  )
-}
+  );
+};
+
+export default FlashcardList;
