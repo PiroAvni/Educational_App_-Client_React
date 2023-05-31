@@ -9,21 +9,17 @@ import {
 } from 'react-router-dom'
 
 
-import {HomeScreen, ProfileScreen, LoginAndRegisterScreen, DashBoard, FlashCardScreen, FlashCards , RegisterScreen} from './screens';
+
+
+
+import {HomeScreen, ProfileScreen, LoginAndRegisterScreen, DashBoard, FlashCardScreen, FlashCards , RegisterScreen, GenericFlashCard} from './screens';
+
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import store from './store'
 import { Provider } from 'react-redux'
 
 
-import {
-  HomeScreen,
-  ProfileScreen,
-  LoginAndRegisterScreen,
-  DashBoard,
-  AddFlashCardScreen,
-  FlashCards,
-} from './screens'
 
 import PrivateRoute from './components/PrivateRoute/index'
 
@@ -34,11 +30,13 @@ const router = createBrowserRouter(
       <Route path='/login' element={<LoginAndRegisterScreen />} />
 
       <Route path='/register' element={<RegisterScreen />} />
+      
       <Route path='' element={<PrivateRoute />}>
         <Route path='/profile' element={<ProfileScreen />} />
           <Route path='/dashboard' element={<DashBoard />} /> 
           <Route path='/add-cards' element={<FlashCardScreen />} /> 
           <Route path='/flashcard/:id' element={<FlashCards />} /> 
+          <Route path='/GenericFlashCard' element={<GenericFlashCard />} /> 
       </Route> 
 
     </Route>

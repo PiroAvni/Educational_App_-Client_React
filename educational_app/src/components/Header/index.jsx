@@ -34,7 +34,9 @@ const Header = () => {
 
   return (
     <header>
-      <Navbar svariant='dark' expand='lg' collapseOnSelect>
+
+      <Navbar variant='dark' expand='lg' collapseOnSelect>
+
         <Container>
           <LinkContainer to='/'>
             <Navbar.Brand>
@@ -46,23 +48,33 @@ const Header = () => {
             <Nav className='ms-auto'>
               {userInfo ? (
                 <>
-                  <>
-                    <LinkContainer to='/dashboard'>
-                      <Nav.Link>
-                        <GoDashboard /> DashBoard
-                      </Nav.Link>
-                    </LinkContainer>
-                    <LinkContainer to='/add-cards'>
-                      <Nav.Link>
-                        <BiBookAdd /> Add Flashcards
-                      </Nav.Link>
-                    </LinkContainer>
-                    <LinkContainer to='/flashcard/:id'>
-                      <Nav.Link>
-                        <TbCards /> Flashcards
-                      </Nav.Link>
-                    </LinkContainer>
-                  </>
+
+                <>
+                  <LinkContainer to='/dashboard'>
+                    <Nav.Link >
+                      <GoDashboard /> DashBoard
+                    </Nav.Link>
+                  </LinkContainer>
+                  <LinkContainer to='/add-cards'>
+                    <Nav.Link className='nav-link'>
+                      <BiBookAdd /> Add Flashcards
+                    </Nav.Link>
+                  </LinkContainer>
+                  <LinkContainer to='/flashcard/:id'>
+                    <Nav.Link>
+                       <TbCards/> Flashcards
+                    </Nav.Link>
+                  </LinkContainer>
+                  <LinkContainer to='/GenericFlashCard'>
+                    <Nav.Link>
+                       <TbCards/> Generic FlashCards
+                    </Nav.Link>
+                  </LinkContainer>
+
+
+                  
+                </>
+
                   <NavDropdown title={userInfo.name} id='name'>
                     <LinkContainer to='/profile'>
                       <NavDropdown.Item>

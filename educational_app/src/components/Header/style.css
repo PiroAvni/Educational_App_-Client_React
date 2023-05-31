@@ -2,3 +2,18 @@
 width: 90px;
 /* height: 70px; */
 }
+.nav-link{
+    color: #fff !important;
+    font-size: 1.1rem !important;
+}
+ .active{
+    color: #feda38 !important;
+}
+.nav-link.active{
+    color: #feda38;
+    font-weight: bold !important;
+}
+svg{
+    height: 1.3rem;
+    width: 1.3rem;
+}
