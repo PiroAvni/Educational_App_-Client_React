@@ -1,4 +1,4 @@
-import React from 'react'
+
 import Flashcard from '../FlashCard/index';
 
 export default function FlashcardList({ flashcards }) {

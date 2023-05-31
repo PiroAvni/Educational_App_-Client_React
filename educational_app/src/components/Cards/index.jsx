@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import{ useState } from 'react';
 import FlashCards from '../../screens/FlashCards/index'
 import './style.css'
 const Flashcard = ({ flashcards }) => {
