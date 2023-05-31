@@ -2,6 +2,8 @@
 .flashcard-container {
     perspective: 1000px;
     margin: 20px 0;
+    display: flex;
+    justify-content: center;
   }
   
   /* Flashcard */
@@ -69,3 +71,20 @@
     background-color: #ccc;
   }
   
+.button-cardindex-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+
+  /* card length */
+  .card-index {
+    color: #fff;
+  }
+
+  /* previous and next button */
+  .flashcard-btn-directions{
+    margin:2rem;
+  }
