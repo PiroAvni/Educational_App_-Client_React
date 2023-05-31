@@ -59,6 +59,14 @@ const Header = () => {
                        <TbCards/> Flashcards
                     </Nav.Link>
                   </LinkContainer>
+                  <LinkContainer to='/GenericFlashCard'>
+                    <Nav.Link>
+                       <TbCards/> Generic FlashCards
+                    </Nav.Link>
+                  </LinkContainer>
+
+
+                  
                 </>
                   <NavDropdown title={userInfo.name} id='name'>
                     <LinkContainer to='/profile'>

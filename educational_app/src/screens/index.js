@@ -6,3 +6,4 @@ export {default as LoginAndRegisterScreen} from './LoginAndRegisterScreen';
 export {default as DashBoard} from './Dashboard';
 export {default as FlashCards} from './FlashCards';
 export {default as FlashCardScreen} from './FlashCardScreen';
+export {default as GenericFlashCard} from './GenericFlashCardScreen';

@@ -9,3 +9,4 @@ export { default as Deck } from "./Deck";
 export { default as InputBox } from "./InputBox/index.jsx";
 export { default as FlashCardForm } from "./FlashCardForm";
 export { default as FlashCards } from "./Cards";
+export { default as SearchForm } from "./SearchForm";
