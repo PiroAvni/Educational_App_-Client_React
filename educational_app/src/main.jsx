@@ -8,9 +8,13 @@ import {
   RouterProvider,
 } from 'react-router-dom'
 
+
+import {HomeScreen, ProfileScreen, LoginAndRegisterScreen, DashBoard, FlashCardScreen, FlashCards , RegisterScreen} from './screens';
+
 import 'bootstrap/dist/css/bootstrap.min.css'
 import store from './store'
 import { Provider } from 'react-redux'
+
 
 import {
   HomeScreen,
@@ -29,13 +33,14 @@ const router = createBrowserRouter(
       <Route index={true} path='/' element={<HomeScreen />} />
       <Route path='/login' element={<LoginAndRegisterScreen />} />
 
-      {/* <Route path='/register' element={<RegisterScreen />} /> */}
+      <Route path='/register' element={<RegisterScreen />} />
       <Route path='' element={<PrivateRoute />}>
         <Route path='/profile' element={<ProfileScreen />} />
-        <Route path='/dashboard' element={<DashBoard />} />
-        <Route path='/add-cards' element={<AddFlashCardScreen />} />
-        <Route path='/flashcard/:id' element={<FlashCards />} />
-      </Route>
+          <Route path='/dashboard' element={<DashBoard />} /> 
+          <Route path='/add-cards' element={<FlashCardScreen />} /> 
+          <Route path='/flashcard/:id' element={<FlashCards />} /> 
+      </Route> 
+
     </Route>
   )
 )

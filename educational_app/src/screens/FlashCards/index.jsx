@@ -1,4 +1,5 @@
 import Flashcard from '../../components/Cards/index';
+import './stsyle.css'
 
 const flashcards = [
   { question: 'What is the capital of France?', answer: 'Paris' },
@@ -8,7 +9,7 @@ const flashcards = [
 
 const FlashCards = () => {
   return (
-    <div>
+    <div className='flashcards-container'>
       <h1>Flashcard App</h1>
       <Flashcard flashcards={flashcards} />
     </div>
