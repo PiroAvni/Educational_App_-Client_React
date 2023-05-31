@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from "react";
 
 import Deck from'../../components/Deck/index';
@@ -16,9 +17,11 @@ function DashBoard() {
     {id: 1,title: "Maths", img :<TbMathSymbols/>},{id: 2,title: "Science", img :<TbMathSymbols/>}
 ] 
 
+
  
   return (
     <>
+
 <div className="dashboard-container">
   <div className="avatar">
    <img className="avatar-img" src={avatar} alt="Profile image"/>
@@ -36,9 +39,11 @@ function DashBoard() {
 </div>
 
 
+
     </>
   )
 }
+
 
 export default DashBoard;
 

@@ -34,7 +34,9 @@ const Header = () => {
 
   return (
     <header>
+
       <Navbar variant='dark' expand='lg' collapseOnSelect>
+
         <Container>
           <LinkContainer to='/'>
             <Navbar.Brand>
@@ -46,6 +48,7 @@ const Header = () => {
             <Nav className='ms-auto'>
               {userInfo ? (
                 <>
+
                 <>
                   <LinkContainer to='/dashboard'>
                     <Nav.Link >
@@ -71,6 +74,7 @@ const Header = () => {
 
                   
                 </>
+
                   <NavDropdown title={userInfo.name} id='name'>
                     <LinkContainer to='/profile'>
                       <NavDropdown.Item>
