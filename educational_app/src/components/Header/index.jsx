@@ -49,6 +49,11 @@ const Header = () => {
                       <FaSignOutAlt /> Add Flashcards
                     </Nav.Link>
                   </LinkContainer>
+                  <LinkContainer to='/flashcard/:id'>
+                    <Nav.Link>
+                      <FaSignOutAlt />  Flashcards
+                    </Nav.Link>
+                  </LinkContainer>
                 </>
                   <NavDropdown title={userInfo.name} id='name'>
                     <LinkContainer to='/profile'>
