@@ -44,9 +44,9 @@ const Header = () => {
               {userInfo ? (
                 <>
                 <>
-                  <LinkContainer to='/dashbroad'>
+                  <LinkContainer to='/dashboard'>
                     <Nav.Link>
-                      <GoDashboard /> DashBroad
+                      <GoDashboard /> DashBoard
                     </Nav.Link>
                   </LinkContainer>
                   <LinkContainer to='/add-cards'>
