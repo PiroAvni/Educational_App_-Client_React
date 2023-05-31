@@ -83,14 +83,14 @@ const Header = () => {
                       </NavDropdown.Item>
                     </LinkContainer>
 
-                    <LinkContainer to='/'>
+                    <LinkContainer to='/bookmarks'>
                       <NavDropdown.Item>
                         <FaBookmark />
                         Bookmark
                       </NavDropdown.Item>
                     </LinkContainer>
 
-                    <LinkContainer to='/'>
+                    <LinkContainer to='/progress'>
                       <NavDropdown.Item>
                         <GiProgression /> Progress
                       </NavDropdown.Item>
