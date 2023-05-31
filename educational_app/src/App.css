@@ -1,7 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@500;1000&display=swap');
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
-
+  margin: 0;
+  padding: 0;
   text-align: center;
-  background-color: #262261
+  background-color: #262261;
+  min-height: 100vh;
+  min-width: 100vw;
+  font-family: 'Proza Libre', sans-serif;
+  font-weight: 900;
 }

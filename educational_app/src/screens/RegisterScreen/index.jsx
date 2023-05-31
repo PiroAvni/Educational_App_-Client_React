@@ -23,9 +23,7 @@ const RegisterScreen = () => {
 
   useEffect(() => {
     if (userInfo) {
-
-      navigate('/dashbroad');
-
+      navigate('/dashbroad')
     }
   }, [navigate, userInfo])
 
@@ -45,7 +43,7 @@ const RegisterScreen = () => {
     }
   }
   return (
-    <FormContainer>
+    <>
       <h1>Register</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group className='my-2' controlId='name'>
@@ -99,7 +97,7 @@ const RegisterScreen = () => {
           Already have an account? <Link to={`/login`}>Login</Link>
         </Col>
       </Row>
-    </FormContainer>
+    </>
   )
 }
 

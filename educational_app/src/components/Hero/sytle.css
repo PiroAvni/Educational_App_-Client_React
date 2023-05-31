@@ -1,38 +1,69 @@
+.py-5 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
-.hero-card{
-    background-image: linear-gradient(135deg rgba(255, 255, 255, 0.269),rgba(255,255,255,0))!important;
-    -webkit-backdrop-filter: blur(20px)!important;
-    backdrop-filter: blur(20px)!important;
-    box-shadow: 0px 8px 32px 0 rgba(0, 0, 0, 0.37) !important;
-    border: 1px solid rgba(255,255,255,0.18);
-    border-radius: 32px;
-    background-color: #262261 !important; 
-    height: auto !important;
-    height: 75% !important;
-     /*box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);	
+.hero-card {
+  background-image: linear-gradient(
+    135deg rgba(255, 255, 255, 0.269),
+    rgba(255, 255, 255, 0)
+  ) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  backdrop-filter: blur(20px) !important;
+  box-shadow: 0px 8px 32px 0 rgba(0, 0, 0, 0.37) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 32px;
+  background-color: #262261 !important;
+  height: auto !important;
+
+  /*box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);	
 	border-radius: 5px;
 	background-color: rgba(255, 255, 255, .15);
 	
 	backdrop-filter: blur(5px); */
-
-}
-.hero-logo{
-    width:60%;
-    height: auto;
-}
-.hero-title, .hero-sub{
-    color: aliceblue !important;
 }
 
-.hero-btn{
-    color: #262261 !important;
-background-color: #FEDA38 !important;
-border: 1px solid #262261!important;
-border-radius: 40px !important;
-
+.hero-logo {
+  width: 80%;
+  height: auto;
+  padding-bottom: 10px;
 }
-.hero-btn:hover, .hero-btn:focus{
-    background-color: #262261 !important;
-    color: #FEDA38!important;
-    border: 1px solid #FEDA38!important;
+.hero-title,
+.hero-sub {
+  color: aliceblue !important;
+  font-weight: 900;
+  padding-bottom: 5px;
+}
+
+.hero-btn {
+  color: #262261 !important;
+  background-color: #feda38 !important;
+  border: 1px solid #262261 !important;
+  border-radius: 40px !important;
+  width: 250px;
+  height: 60px;
+  font-weight: 900;
+  box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.75);
+  padding-top: 10px;
+  transition: all 0.4s ease-in-out;
+}
+.hero-btn:hover,
+.hero-btn:focus {
+  background-color: #262261 !important;
+  color: #feda38 !important;
+  border: 2px solid #feda38 !important;
+  transform: scale(1.1);
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.4);
+  transition: all 0.4s ease-in-out;
+}
+
+.started-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 900;
+  height: 100%;
+  font-size: 20px;
 }
