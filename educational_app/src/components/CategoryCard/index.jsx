@@ -3,13 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { Container, Card} from 'react-bootstrap';
 import './style.css'
 
-const Deck = ({  deck}) => {
+const CategoryCard = ({  idx, name, categoryId }) => {
 
-console.log(deck)
+    console.log(name)
+
   let navigate =useNavigate()
 
-    const handleDeckClick = () => {
-      navigate(`/flashcards/${deck._id}`);
+    const handleDeckClick = (categoryId) => {
+      navigate(`/decks/${categoryId}`);
     };
   return (
     <div className=' py-5 Deck'>
@@ -19,13 +20,9 @@ console.log(deck)
           
         </div>
 
-      <h2>{deck.title}</h2>
-      <p>{deck.description}</p>
-      <p>Visibility: {deck.visibility}</p>
-      <p>Created By: {deck.userId}</p>
-      <p>Category: {deck.categoryId}</p>
-      <p>Created Date: {deck.create_date}</p> 
-       <button onClick={handleDeckClick}>View Flashcards</button>
+      <h2>{name}</h2>
+      
+       {/* <button onClick={handleDeckClick}>View Flashcards</button> */}
       
       </Card>
     </Container>
@@ -33,7 +30,4 @@ console.log(deck)
   )
 }
 
-export default Deck
-
-
-
+export default CategoryCard

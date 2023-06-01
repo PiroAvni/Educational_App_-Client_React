@@ -6,10 +6,11 @@ const DeckScreen = () => {
   const [decks, setDecks] = useState([]);
 
   useEffect(() => {
-    // Fetch the deck data from the server
+  
     const fetchDecks = async () => {
       try {
-        const response = await axios.get('/api/decks'); // API endpoint
+        const response = await axios.get('http://localhost:5000/api/deck/'); 
+        console.log(response.data)
         setDecks(response.data);
       } catch (error) {
         console.error(error);
@@ -19,12 +20,13 @@ const DeckScreen = () => {
     fetchDecks();
   }, []);
 
+  console.log(decks)
   return (
     <div>
       <h1>Deck List</h1>
-      {decks.map((deck) => (
-        <Deck key={deck._id} deck={deck} />
-      ))}
+      {/* {decks.map((deck) => (
+        <Deck key={deck._id} deck={deck.title} />
+      ))} */}
     </div>
   );
 };
