@@ -1,5 +1,5 @@
 import { apiSlice } from '../apiSlice/apiSlice'
-const USERS_URL = 'https://educational-server-qq6d.onrender.com/api/users'
+const USERS_URL = 'http://localhost:3000/api/users'
 
 export const userApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
