@@ -1,8 +1,6 @@
-import { useState, useEffect, useRef } from "react";
-
+import { useState, useEffect } from "react";
 import { CategoryCard } from "../../components";
 import { useSelector, useDispatch } from "react-redux";
-import { TbMathSymbols } from "react-icons/tb";
 import avatar from "../../../public/image/Profile-image.png";
 import { SearchForm } from "../../components";
 import { useNavigate } from "react-router-dom";
@@ -13,13 +11,16 @@ function DashBoard() {
   const [decks, setDecks] = useState([]);
   const { userInfo } = useSelector((state) => state.auth);
 
+
+
+
   useEffect(() => {
     const fetchDecks = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/deck/"
+          "https://educational-server-qq6d.onrender.com/api/cards"
         );
-        console.log(response.data);
+         console.log('line20:',response.data);
         setDecks(response.data);
       } catch (error) {
         console.error(error);
@@ -29,11 +30,12 @@ function DashBoard() {
     fetchDecks();
   }, []);
 
-  const handleDeckClick = (categoryId) => {
-    navigate(`/decks/${categoryId}`);
-  };
+  // const handleDeckClick = (categoryId) => {
+  //   navigate(`/deck/${categoryId}`);
+  // };
 
-
+const uniqueCategories = [...new Set(decks.map((item) => item.categoryID._id))]
+// console.log('uq', item)
   return (
     <>
       <div className="dashboard-container">
@@ -41,16 +43,21 @@ function DashBoard() {
           <img className="avatar-img" src={avatar} alt="Profile image" />
         </div>
         <h1 className="dashboard-title" id="name">
-          {" "}
-          Welcome {userInfo.name}{" "}
+        
+          Welcome {userInfo.name}
         </h1>
         <p className="dashboard-description">Search for Category</p>
 
         <SearchForm />
         <div className="dashboard-categories-container">
-          {decks.map((item, idx) => (
-            <CategoryCard key={idx} name={item.categoryId.name} categoryId={item.categoryId}  />
-          ))}
+           {uniqueCategories.map((categoryId, idx) => {
+         
+            const categoryDeck = decks.find((item)=> item.categoryID._id === categoryId
+            )
+            if(categoryDeck){
+              return<CategoryCard key={idx} name={categoryId} decks={decks} />
+            }
+          })} 
         </div>
       </div>
     </>

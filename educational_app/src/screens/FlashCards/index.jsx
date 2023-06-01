@@ -18,7 +18,7 @@ const FlashCards = () => {
     completionStatus: 'incomplete',
   });
   
-
+const [flashcards , setFlashCards] =useState([])
   const handleReview = (response) => {
     // Update the progress data based on user interactions
     setProgressData((prevData) => ({
@@ -45,7 +45,7 @@ const FlashCards = () => {
   const handleSubmit = async () => {
     try {
       // Send a POST request to the API endpoint to submit the progress data
-      const response = await axios.post('/api/progress', progressData);
+      const response = await axios.post('https://educational-server-qq6d.onrender.com/api/progress', progressData);
       console.log(response.data); // Handle the response as needed
     } catch (error) {
       console.error(error);

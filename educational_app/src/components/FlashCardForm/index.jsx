@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
+import slugify from "slugify";
 
 const FlashcardForm = () => {
   const [flashcards, setFlashcards] = useState([
@@ -12,6 +13,7 @@ const FlashcardForm = () => {
   const [notification, setNotification] = useState("");
 
   const { userInfo } = useSelector((state) => state.auth)
+
 console.log(userInfo._id)
   const handleFlashcardChange = (index, field, value) => {
     const updatedFlashcards = [...flashcards];
@@ -29,12 +31,15 @@ console.log(userInfo._id)
 
   const handleSubmit = async () => {
     try {
+
+      const slug = slugify(category, { lower: true });
+      
       const categoryResponse = await fetch("http://localhost:5000/api/categories", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name: category }),
+        body: JSON.stringify({ name: category,slug }),
       });
       const categoryData = await categoryResponse.json();
       console.log(categoryData);

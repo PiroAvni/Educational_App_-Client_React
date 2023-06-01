@@ -1,16 +1,21 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React ,{useState} from 'react';
+import { useNavigate, Link, useParams } from 'react-router-dom';
 import { Container, Card} from 'react-bootstrap';
 import './style.css'
 
-const CategoryCard = ({  idx, name, categoryId }) => {
+const CategoryCard = ( { name, decks} ) => {
 
-    console.log(name)
+    console.log('cat card:', decks)
+   
+
+    const ids = decks.map((item)=> item.categoryID._id)
+
+    console.log('IDS:',ids)
 
   let navigate =useNavigate()
-
-    const handleDeckClick = (categoryId) => {
-      navigate(`/decks/${categoryId}`);
+    const handleDeckClick = (ids) => {
+    
+      navigate(`/deck/${ids}`);
     };
   return (
     <div className=' py-5 Deck'>
@@ -22,7 +27,7 @@ const CategoryCard = ({  idx, name, categoryId }) => {
 
       <h2>{name}</h2>
       
-       {/* <button onClick={handleDeckClick}>View Flashcards</button> */}
+     
       
       </Card>
     </Container>

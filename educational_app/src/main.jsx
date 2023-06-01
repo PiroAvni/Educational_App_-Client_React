@@ -39,7 +39,7 @@ const router = createBrowserRouter(
           <Route path='/GenericFlashCard' element={<GenericFlashCard />} /> 
           <Route path='/progress' element={<ProgressScreen />} /> 
           <Route path='/bookmarks' element={<BookMarkScreen />} /> 
-          <Route path= '/decks/${categoryId}' element={<DeckScreen />} /> 
+          <Route path= '/deck/:category' element={<DeckScreen />} /> 
       </Route> 
 
     </Route>
