@@ -1,41 +1,46 @@
+/* dashboard style */
 
-  /* dashboard style */
-
-.dashboard-container{
+.dashboard-container {
   border: 1px solid white;
-  display:flex;
+  display: flex;
   flex-direction: column;
-  justify-content:center;
-  width: 100%;
-  
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
 }
 
-  .flashcard-options {
-    margin-top: .5rem;
-  }
-  
-  .flashcard-option {
-    margin-top: .25rem;
-    color: #555;
-    font-size: .75rem;
-  }
-  
-  .flashcard-option:first-child {
-    margin-top: 0;
-  }
+.flashcard-options {
+  margin-top: .5rem;
+}
 
-  .avatar-img{
-    margin-top: 4rem;
-    height:8em;
-    width: 8rem;
-  }
-  .dashboard-description{
-    color:#fff;
-  }
-  .dashboard-title{
-    color: #fff;
-  }
-  .dashboard-decks-container{
-    display: flex;
-    flex-direction: row;
-  }
+.flashcard-option {
+  margin-top: .25rem;
+  color: #555;
+  font-size: .75rem;
+}
+
+.flashcard-option:first-child {
+  margin-top: 0;
+}
+
+.avatar-img {
+  margin-top: 4rem;
+  height: 8em;
+  width: 8rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dashboard-description {
+  color: #fff;
+}
+
+.dashboard-title {
+  color: #fff;
+}
+
+.dashboard-decks-container {
+  display: flex;
+  flex-direction: row;
+}
