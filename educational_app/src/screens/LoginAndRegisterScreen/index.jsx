@@ -12,30 +12,32 @@ function LoginAndRegisterScreen() {
   }
 
   return (
-    <div className='log-reg-container'>
-      <Tabs
-        defaultActiveKey='profile'
-        id='fill-tab-example'
-        className='mb-3'
-        fill
-        activeKey={active}
-        onSelect={activeTabHandler}
-      >
-        <Tab
-          eventKey='login'
-          title='Login'
-          className={active === 'login' ? 'active-tab' : 'inactive-tab'}
+    <div className='more-container'>
+      <div className='log-reg-container'>
+        <Tabs
+          defaultActiveKey='profile'
+          id='fill-tab-example'
+          className='mb-3'
+          fill
+          activeKey={active}
+          onSelect={activeTabHandler}
         >
-          <LoginScreen />
-        </Tab>
-        <Tab
-          eventKey='register'
-          title='Register'
-          className={active === 'register' ? 'active-tab' : 'inactive-tab'}
-        >
-          <RegisterScreen />
-        </Tab>
-      </Tabs>
+          <Tab
+            eventKey='login'
+            title='Login'
+            className={active === 'login' ? 'active-tab' : 'inactive-tab'}
+          >
+            <LoginScreen />
+          </Tab>
+          <Tab
+            eventKey='register'
+            title='Register'
+            className={active === 'register' ? 'active-tab' : 'inactive-tab'}
+          >
+            <RegisterScreen />
+          </Tab>
+        </Tabs>
+      </div>
     </div>
   )
 }

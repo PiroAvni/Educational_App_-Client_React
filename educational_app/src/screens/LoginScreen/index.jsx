@@ -47,10 +47,10 @@ const LoginScreen = () => {
           {/* <Form.Label className='email-address'>Email Address</Form.Label> */}
           <Form.Control
             type='email'
-            placeholder='Enter email'
+            placeholder='Email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className='email-input'
+            className='sign-in-up form-control'
           ></Form.Control>
         </Form.Group>
 
@@ -58,7 +58,7 @@ const LoginScreen = () => {
           {/* <Form.Label className='password'>Password</Form.Label> */}
           <InputBox
             type='null'
-            placeholder='Enter password'
+            placeholder='Password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           ></InputBox>
@@ -68,18 +68,23 @@ const LoginScreen = () => {
           disabled={isLoading}
           type='submit'
           variant='primary'
-          className='mt-3'
+          className='sign-btn'
         >
-          <p className='sign-in'>Sign In</p>
+          <p className='started-button '>Sign In</p>
         </Button>
       </Form>
 
       {/* {isLoading && <Loader />} */}
 
       <Row className='py-3'>
-        <Col>
-          {/* New Customer? <Link to='/register'>Register</Link> */}
-          New Customer? <Link to='/register'>Register</Link>
+        <Col
+          className='text-center'
+          style={{ color: 'black', paddingTop: '20px' }}
+        >
+          New Customer?{' '}
+          <Link style={{ color: 'black' }} to='/register'>
+            Register
+          </Link>
         </Col>
       </Row>
     </>
