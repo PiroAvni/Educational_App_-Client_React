@@ -3,10 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { Container, Card} from 'react-bootstrap';
 import './style.css'
 
-const Deck = ({ deck, name, description, create_date, visibility, category}) => {
+const Deck = ({ id, deck, name, description, create_date, visibility, category}) => {
+console.log('key',deck._id)
+console.log('deck line 8 ',deck)
+const navigate = useNavigate()
 
-console.log('deck line 8 ',category)
-  let navigate =useNavigate()
   const formatDate = (date) => {
     return new Date(date).toLocaleString('en-GB', {
       day: 'numeric',
@@ -14,10 +15,11 @@ console.log('deck line 8 ',category)
       year: 'numeric'
     })
   }
-
     const handleDeckClick = () => {
-      navigate(`/deck/${category}`);
+      navigate(`/flashcard/${id}`);
     };
+
+
   return (
     <div className=' py-5 Deck'>
     <Container className='d-flex justify-content-center deck-container'>
@@ -28,7 +30,7 @@ console.log('deck line 8 ',category)
 
       <h2>{deck}</h2>
       <p>Description: {description}</p>
-      <p>Visibility: {visibility}</p>
+      {/* <p>Visibility: {visibility}</p> */}
       <p>Created By: {name}</p>
       <p>Category: {category}</p>
       <p>Created Date: {formatDate(create_date)}</p> 

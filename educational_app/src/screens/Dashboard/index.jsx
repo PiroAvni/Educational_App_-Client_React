@@ -8,33 +8,33 @@ import "./style.css";
 import axios from "axios";
 
 function DashBoard() {
-  const [decks, setDecks] = useState([]);
+  const [categories, setCategories] = useState([]);
   const { userInfo } = useSelector((state) => state.auth);
 
 
 
 
   useEffect(() => {
-    const fetchDecks = async () => {
+    const fetchCategory = async () => {
       try {
         const response = await axios.get(
-          "https://educational-server-qq6d.onrender.com/api/cards"
+          "http://localhost:5000/api/cards"
         );
          console.log('line20:',response.data);
-        setDecks(response.data);
+         setCategories(response.data);
       } catch (error) {
         console.error(error);
       }
     };
 
-    fetchDecks();
+    fetchCategory();
   }, []);
 
   // const handleDeckClick = (categoryId) => {
   //   navigate(`/deck/${categoryId}`);
   // };
 
-const uniqueCategories = [...new Set(decks.map((item) => item.categoryID._id))]
+const uniqueCategories = [...new Set(categories.map((item) => item.categoryID._id))]
 // console.log('uq', item)
   return (
     <>
@@ -48,14 +48,14 @@ const uniqueCategories = [...new Set(decks.map((item) => item.categoryID._id))]
         </h1>
         <p className="dashboard-description">Search for Category</p>
 
-        <SearchForm />
+        {/* <SearchForm /> */}
         <div className="dashboard-categories-container">
            {uniqueCategories.map((categoryId, idx) => {
          
-            const categoryDeck = decks.find((item)=> item.categoryID._id === categoryId
+            const categoryDeck = categories.find((item)=> item.categoryID._id === categoryId
             )
             if(categoryDeck){
-              return<CategoryCard key={idx} name={categoryId} decks={decks} />
+              return<CategoryCard key={idx} name={categoryId} categories={categories} />
             }
           })} 
         </div>
