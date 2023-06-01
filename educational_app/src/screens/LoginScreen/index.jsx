@@ -8,6 +8,7 @@ import { setCredentials } from '../../slices/authSlice/authSlice'
 import { toast } from 'react-toastify'
 import { InputBox } from '../../components'
 // import Loader from '../../components';
+import './style.css'
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('')
@@ -39,21 +40,22 @@ const LoginScreen = () => {
 
   return (
     <>
-      <h1>Sign In</h1>
+      <h1 className='sign-in-title'>Sign In</h1>
 
-      <Form onSubmit={submitHandler}>
+      <Form className='form-container' onSubmit={submitHandler}>
         <Form.Group className='my-2' controlId='email'>
-          <Form.Label>Email Address</Form.Label>
+          {/* <Form.Label className='email-address'>Email Address</Form.Label> */}
           <Form.Control
             type='email'
             placeholder='Enter email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            className='email-input'
           ></Form.Control>
         </Form.Group>
 
         <Form.Group className='my-2' controlId='password'>
-          <Form.Label>Password</Form.Label>
+          {/* <Form.Label className='password'>Password</Form.Label> */}
           <InputBox
             type='null'
             placeholder='Enter password'
@@ -68,7 +70,7 @@ const LoginScreen = () => {
           variant='primary'
           className='mt-3'
         >
-          Sign In
+          <p className='sign-in'>Sign In</p>
         </Button>
       </Form>
 
