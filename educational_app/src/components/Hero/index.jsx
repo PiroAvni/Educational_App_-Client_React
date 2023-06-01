@@ -22,7 +22,7 @@ const Hero = () => {
           </p>
           <div className='d-flex'>
             <Button onClick={handleGetStarted} className='me-3 hero-btn'>
-              Get Started
+              <p className='btn-bold'>Get Started</p>
             </Button>
           </div>
         </Card>

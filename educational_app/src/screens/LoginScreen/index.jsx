@@ -8,6 +8,7 @@ import { setCredentials } from '../../slices/authSlice/authSlice'
 import { toast } from 'react-toastify'
 import { InputBox } from '../../components'
 // import Loader from '../../components';
+import './style.css'
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('')
@@ -39,24 +40,25 @@ const LoginScreen = () => {
 
   return (
     <>
-      <h1>Sign In</h1>
+      <h1 className='sign-in-title'>Sign In</h1>
 
-      <Form onSubmit={submitHandler}>
+      <Form className='form-container' onSubmit={submitHandler}>
         <Form.Group className='my-2' controlId='email'>
-          <Form.Label>Email Address</Form.Label>
+          {/* <Form.Label className='email-address'>Email Address</Form.Label> */}
           <Form.Control
             type='email'
-            placeholder='Enter email'
+            placeholder='Email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            className='sign-in-up form-control'
           ></Form.Control>
         </Form.Group>
 
         <Form.Group className='my-2' controlId='password'>
-          <Form.Label>Password</Form.Label>
+          {/* <Form.Label className='password'>Password</Form.Label> */}
           <InputBox
             type='null'
-            placeholder='Enter password'
+            placeholder='Password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           ></InputBox>
@@ -66,18 +68,23 @@ const LoginScreen = () => {
           disabled={isLoading}
           type='submit'
           variant='primary'
-          className='mt-3'
+          className='sign-btn'
         >
-          Sign In
+          <p className='started-button '>Sign In</p>
         </Button>
       </Form>
 
       {/* {isLoading && <Loader />} */}
 
       <Row className='py-3'>
-        <Col>
-          {/* New Customer? <Link to='/register'>Register</Link> */}
-          New Customer? <Link to='/register'>Register</Link>
+        <Col
+          className='text-center'
+          style={{ color: 'black', paddingTop: '20px' }}
+        >
+          New Customer?{' '}
+          <Link style={{ color: 'black' }} to='/register'>
+            Register
+          </Link>
         </Col>
       </Row>
     </>
