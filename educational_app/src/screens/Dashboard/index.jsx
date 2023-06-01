@@ -1,51 +1,67 @@
-
-import { useState, useEffect, useRef } from "react";
-
-import Deck from'../../components/Deck/index';
-import { useSelector, useDispatch } from 'react-redux';
-import { TbMathSymbols } from 'react-icons/tb';
-import avatar from '../../../public/image/Profile-image.png'
+import { useState, useEffect } from "react";
+import { CategoryCard } from "../../components";
+import { useSelector, useDispatch } from "react-redux";
+import avatar from "../../../public/image/Profile-image.png";
 import { SearchForm } from "../../components";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import "./style.css";
 import axios from "axios";
 
 function DashBoard() {
-  const { userInfo } = useSelector((state) => state.auth)
-
-  const category=  [
-    {id: 1,title: "Maths", img :<TbMathSymbols/>},{id: 2,title: "Science", img :<TbMathSymbols/>}
-] 
+  const [decks, setDecks] = useState([]);
+  const { userInfo } = useSelector((state) => state.auth);
 
 
- 
+
+
+  useEffect(() => {
+    const fetchDecks = async () => {
+      try {
+        const response = await axios.get(
+          "https://educational-server-qq6d.onrender.com/api/cards"
+        );
+         console.log('line20:',response.data);
+        setDecks(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchDecks();
+  }, []);
+
+  // const handleDeckClick = (categoryId) => {
+  //   navigate(`/deck/${categoryId}`);
+  // };
+
+const uniqueCategories = [...new Set(decks.map((item) => item.categoryID._id))]
+// console.log('uq', item)
   return (
     <>
+      <div className="dashboard-container">
+        <div className="avatar">
+          <img className="avatar-img" src={avatar} alt="Profile image" />
+        </div>
+        <h1 className="dashboard-title" id="name">
+        
+          Welcome {userInfo.name}
+        </h1>
+        <p className="dashboard-description">Search for Category</p>
 
-<div className="dashboard-container">
-  <div className="avatar">
-   <img className="avatar-img" src={avatar} alt="Profile image"/>
-  </div>
-  <h1 className="dashboard-title" id='name'> Welcome {userInfo.name} </h1>
-<p className="dashboard-description">Search for Category</p>
-
-<SearchForm/>
-<div className="dashboard-decks-container">
-{category.map((item, idx) =>(
-  <Deck  key ={idx} title={item.title} img= {item.img}/>
-  
-))}
-</div>
-</div>
-
-
-
+        <SearchForm />
+        <div className="dashboard-categories-container">
+           {uniqueCategories.map((categoryId, idx) => {
+         
+            const categoryDeck = decks.find((item)=> item.categoryID._id === categoryId
+            )
+            if(categoryDeck){
+              return<CategoryCard key={idx} name={categoryId} decks={decks} />
+            }
+          })} 
+        </div>
+      </div>
     </>
-  )
+  );
 }
 
-
 export default DashBoard;
-
-
-

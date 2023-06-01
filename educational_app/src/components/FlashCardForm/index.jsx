@@ -1,12 +1,20 @@
-import { useState } from 'react';
+import { useState } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import slugify from "slugify";
 
 const FlashcardForm = () => {
-  const [flashcards, setFlashcards] = useState([{ front: '', back: '' }]);
-  const [category, setCategory] = useState('');
-  const [deckTitle, setDeckTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [notification, setNotification] = useState('');
+  const [flashcards, setFlashcards] = useState([
+    { frontContent: "", backContent: "" },
+  ]);
+  const [category, setCategory] = useState("");
+  const [deckTitle, setDeckTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [visibility, setVisibility] = useState("public");
+  const [notification, setNotification] = useState("");
 
+  const { userInfo } = useSelector((state) => state.auth)
+
+console.log(userInfo._id)
   const handleFlashcardChange = (index, field, value) => {
     const updatedFlashcards = [...flashcards];
     updatedFlashcards[index][field] = value;
@@ -14,37 +22,84 @@ const FlashcardForm = () => {
   };
 
   const handleAddFlashcard = () => {
-    setFlashcards([...flashcards, { front: '', back: '' }]);
+    setFlashcards([...flashcards, { frontContent: "", backContent: "" }]);
+  };
+
+  const handleVisibilityChange = (e) => {
+    setVisibility(e.target.value);
   };
 
   const handleSubmit = async () => {
     try {
-      // Send data to the backend API
-      const response = await fetch('/api/submit-data', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ flashcards, category, deckTitle, description }),
-      });
 
-      if (response.ok) {
+      const slug = slugify(category, { lower: true });
+      
+      const categoryResponse = await fetch("http://localhost:5000/api/categories", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name: category,slug }),
+      });
+      const categoryData = await categoryResponse.json();
+      console.log(categoryData);
+  
+      const deckResponse = await fetch("http://localhost:5000/api/deck", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: userInfo._id, 
+          categoryId: categoryData._id, 
+          title: deckTitle,
+          description: description,
+          visibility: visibility === "public",
+        }),
+      });
+      const deckData = await deckResponse.json();
+      console.log(deckData);
+  
+      const cardPromises = flashcards.map((flashcard) => {
+        return fetch("http://localhost:5000/api/cards", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            categoryID: categoryData._id, 
+            deckID: deckData._id, 
+            frontContent: flashcard.frontContent,
+            backContent: flashcard.backContent,
+            viewCount: 0,
+          }),
+        });
+      });
+  
+      const cardResponses = await Promise.all(cardPromises);
+      const cardData = await Promise.all(cardResponses.map((response) => response.json()));
+      console.log(cardData);
+  
+      // Check if all requests were successful
+      const allRequestsSuccessful = cardResponses.every((response) => response.ok);
+      if (categoryResponse.ok && deckResponse.ok && allRequestsSuccessful) {
         // Data submitted successfully
-        setNotification('Flashcard successfully added!');
+        setNotification("Flashcard successfully added!");
         // Reset form fields
-        setFlashcards([{ front: '', back: '' }]);
-        setCategory('');
-        setDeckTitle('');
-        setDescription('');
+        setFlashcards([{ frontContent: "", backContent: "" }]);
+        setCategory("");
+        setDeckTitle("");
+        setDescription("");
       } else {
         // Error occurred while submitting data
-        setNotification('An error occurred while adding the flashcard.');
+        setNotification("An error occurred while adding the flashcard.");
       }
     } catch (error) {
-      console.error('Error:', error);
-      setNotification('An error occurred while adding the flashcard.');
+      console.error("Error:", error);
+      setNotification("An error occurred while adding the flashcard.");
     }
   };
+  
 
   return (
     <div>
@@ -80,21 +135,28 @@ const FlashcardForm = () => {
             <label>Front:</label>
             <input
               type="text"
-              value={flashcard.front}
+              value={flashcard.frontContent}
               onChange={(e) =>
-                handleFlashcardChange(index, 'front', e.target.value)
+                handleFlashcardChange(index, "frontContent", e.target.value)
               }
             />
             <label>Back:</label>
             <input
               type="text"
-              value={flashcard.back}
+              value={flashcard.backContent}
               onChange={(e) =>
-                handleFlashcardChange(index, 'back', e.target.value)
+                handleFlashcardChange(index, "backContent", e.target.value)
               }
             />
           </div>
         ))}
+        <div>
+          <label>Visibility:</label>
+          <select value={visibility} onChange={handleVisibilityChange}>
+            <option value="public">Public</option>
+            <option value="private">Private</option>
+          </select>
+        </div>
         <button type="button" onClick={handleAddFlashcard}>
           Add Flashcard
         </button>

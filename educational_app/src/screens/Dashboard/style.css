@@ -26,7 +26,7 @@
 
   .avatar-img{
     margin-top: 4rem;
-    height:8em;
+    height:8rem;
     width: 8rem;
   }
   .dashboard-description{
@@ -35,7 +35,8 @@
   .dashboard-title{
     color: #fff;
   }
-  .dashboard-decks-container{
+  .dashboard-categories-container{
     display: flex;
     flex-direction: row;
   }
+ 

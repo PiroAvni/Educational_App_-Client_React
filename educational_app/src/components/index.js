@@ -11,4 +11,6 @@ export { default as InputBox } from "./InputBox/index.jsx";
 export { default as FlashCardForm } from "./FlashCardForm";
 export { default as FlashCards } from "./Cards";
 export { default as SearchForm } from "./SearchForm";
+export { default as Bookmark } from "./Bookmark";
+export { default as CategoryCard } from "./CategoryCard";
 
