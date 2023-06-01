@@ -89,7 +89,7 @@ const RegisterScreen = () => {
         </Form.Group>
 
         <Button type='submit' variant='primary' className='sign-btn'>
-          Register
+          <p className='started-button '>Register</p>
         </Button>
 
         {isLoading && <Loader />}
