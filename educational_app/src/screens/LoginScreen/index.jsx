@@ -81,7 +81,10 @@ const LoginScreen = () => {
           className='text-center'
           style={{ color: 'black', paddingTop: '20px' }}
         >
-          New Customer? <Link style={{ color: 'black' }} to='/register'></Link>
+          New Customer?{' '}
+          <Link style={{ color: 'black' }} to='/register'>
+            Login
+          </Link>
         </Col>
       </Row>
     </>

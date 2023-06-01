@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import slugify from 'slugify'
+import './style.css'
 
 const FlashcardForm = () => {
   const [flashcards, setFlashcards] = useState([
@@ -108,42 +109,46 @@ const FlashcardForm = () => {
 
   return (
     <div>
-      <h2>Add Flashcard</h2>
-      <form>
+      <h2 className='add-flashcards'>Add Flashcard</h2>
+      <form className='adding-flashcards'>
         <div>
-          <label>Category:</label>
+          <label className='category-title-description'>Category:</label>
           <input
             type='text'
             value={category}
             onChange={(e) => setCategory(e.target.value)}
+            className='input-add '
           />
         </div>
         <div>
-          <label>Deck Title:</label>
+          <label className='category-title-description'>Deck Title:</label>
           <input
             type='text'
             value={deckTitle}
             onChange={(e) => setDeckTitle(e.target.value)}
+            className='input-add '
           />
         </div>
         <div>
-          <label>Description:</label>
+          <label className='category-title-description'>Description:</label>
           <input
             type='text'
             value={description}
             onChange={(e) => setDescription(e.target.value)}
+            className='input-add '
           />
         </div>
-        <h3>Flashcards:</h3>
+
         {flashcards.map((flashcard, index) => (
-          <div key={index}>
-            <label>Front:</label>
+          <div key={index} className='add '>
+            <label className='category-title-description'>Front:</label>
             <input
               type='text'
               value={flashcard.frontContent}
               onChange={(e) =>
                 handleFlashcardChange(index, 'frontContent', e.target.value)
               }
+              className='input-add '
             />
             <label>Back:</label>
             <input
@@ -152,22 +157,33 @@ const FlashcardForm = () => {
               onChange={(e) =>
                 handleFlashcardChange(index, 'backContent', e.target.value)
               }
+              className='input-add '
             />
           </div>
         ))}
-        <div>
-          <label>Visibility:</label>
-          <select value={visibility} onChange={handleVisibilityChange}>
+        <div className='add'>
+          <label className='category-title-description'>Visibility:</label>
+          <select
+            className='select visiblity'
+            value={visibility}
+            onChange={handleVisibilityChange}
+          >
             <option value='public'>Public</option>
             <option value='private'>Private</option>
           </select>
         </div>
-        <button type='button' onClick={handleAddFlashcard}>
-          Add Flashcard
-        </button>
-        <button type='button' onClick={handleSubmit}>
-          Submit
-        </button>
+        <div className='button-container'>
+          <button
+            type='button'
+            className='sign-btn2 '
+            onClick={handleAddFlashcard}
+          >
+            Add Flashcard
+          </button>
+          <button type='button' className='sign-btn2 ' onClick={handleSubmit}>
+            Submit
+          </button>
+        </div>
       </form>
       {notification && <p>{notification}</p>}
     </div>
