@@ -7,6 +7,7 @@ import { useRegisterMutation } from '../../slices/usersApiSlice/usersApiSlice'
 import { setCredentials } from '../../slices/authSlice/authSlice'
 import { toast } from 'react-toastify'
 import { InputBox } from '../../components'
+import './style.css'
 
 const RegisterScreen = () => {
   const [name, setName] = useState('')
@@ -44,30 +45,32 @@ const RegisterScreen = () => {
   }
   return (
     <>
-      <h1>Register</h1>
-      <Form onSubmit={submitHandler}>
+      <h1 className='sign-in-title'>Register</h1>
+      <Form className='form-container' onSubmit={submitHandler}>
         <Form.Group className='my-2' controlId='name'>
-          <Form.Label>Name</Form.Label>
+          {/* <Form.Label>Name</Form.Label> */}
           <Form.Control
             type='name'
             placeholder='Enter name'
             value={name}
             onChange={(e) => setName(e.target.value)}
+            className='sign-in-up form-control'
           ></Form.Control>
         </Form.Group>
 
         <Form.Group className='my-2' controlId='email'>
-          <Form.Label>Email Address</Form.Label>
+          {/* <Form.Label>Email Address</Form.Label> */}
           <Form.Control
             type='email'
             placeholder='Enter email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            className='sign-in-up form-control'
           ></Form.Control>
         </Form.Group>
 
         <Form.Group className='my-2' controlId='password'>
-          <Form.Label>Password</Form.Label>
+          {/* <Form.Label>Password</Form.Label> */}
           <InputBox
             type='password'
             placeholder='Enter password'
@@ -76,7 +79,7 @@ const RegisterScreen = () => {
           ></InputBox>
         </Form.Group>
         <Form.Group className='my-2' controlId='confirmPassword'>
-          <Form.Label>Confirm Password</Form.Label>
+          {/* <Form.Label>Confirm Password</Form.Label> */}
           <InputBox
             type='password'
             placeholder='Confirm password'
@@ -85,7 +88,7 @@ const RegisterScreen = () => {
           ></InputBox>
         </Form.Group>
 
-        <Button type='submit' variant='primary' className='mt-3'>
+        <Button type='submit' variant='primary' className='sign-btn'>
           Register
         </Button>
 
@@ -93,8 +96,14 @@ const RegisterScreen = () => {
       </Form>
 
       <Row className='py-3'>
-        <Col>
-          Already have an account? <Link to={`/login`}>Login</Link>
+        <Col
+          style={{ color: 'black', paddingTop: '20px' }}
+          className='text-center'
+        >
+          Already have an account?{' '}
+          <Link style={{ color: 'black' }} to={`/login`}>
+            Login
+          </Link>
         </Col>
       </Row>
     </>
