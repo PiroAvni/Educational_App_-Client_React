@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { GrPrevious, GrNext } from "react-icons/gr";
-import "./style.css";
+import React, { useState } from 'react';
+import { GrPrevious, GrNext } from 'react-icons/gr';
+import './style.css';
 
 const Flashcard = ({ flashcards }) => {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [showSolution, setShowSolution] = useState(false);
-  console.log(flashcards);
+
   const handleNextCard = () => {
     if (currentCardIndex < flashcards.length - 1) {
       setCurrentCardIndex(currentCardIndex + 1);
@@ -29,23 +29,24 @@ const Flashcard = ({ flashcards }) => {
       <h2>Flashcards</h2>
 
       <div className="flashcard-container">
-        <div className={`flashcard ${showSolution ? "flipped" : ""}`}>
+        <div className={`flashcard ${showSolution ? 'flipped' : ''}`}>
           <div className="front">
             <h3>Question:</h3>
-            <p>{flashcards[currentCardIndex].question}</p>
+            <p>{flashcards[currentCardIndex].frontContent}</p>
             <button onClick={handleFlip}>Show Solution</button>
           </div>
           <div className="back">
             <h3>Answer:</h3>
-            <p>{flashcards[currentCardIndex].answer}</p>
+            <p>{flashcards[currentCardIndex].backContent}</p>
             <button onClick={handleFlip}>Show Question</button>
           </div>
         </div>
       </div>
+
       <div>
         <div className="button-cardindex-container">
           <button
-            className="flashcard-btn-directions "
+            className="flashcard-btn-directions"
             onClick={handlePrevCard}
             disabled={currentCardIndex === 0}
           >
@@ -55,7 +56,7 @@ const Flashcard = ({ flashcards }) => {
             Card {currentCardIndex + 1} of {flashcards.length}
           </p>
           <button
-            className="flashcard-btn-directions "
+            className="flashcard-btn-directions"
             onClick={handleNextCard}
             disabled={currentCardIndex === flashcards.length - 1}
           >
@@ -68,3 +69,4 @@ const Flashcard = ({ flashcards }) => {
 };
 
 export default Flashcard;
+
