@@ -7,7 +7,7 @@ const ProgressList = () => {
   useEffect(() => {
     // Fetch progress data from the backend
     const fetchProgress = async () => {
-      const response = await axios.get('/api/progress'); // Example endpoint
+      const response = await axios.get('http://localhost:5000/api/api/progress'); 
       setProgressList(response.data);
     };
 

@@ -50,6 +50,7 @@
 .button-container {
   display: flex;
   gap: 30px;
+  margin-top: -20px;
 }
 
 label:focus {
@@ -95,6 +96,12 @@ label:focus {
 }
 .visiblity {
   width: 250px;
-  height: 30px;
+  height: 35px;
   text-align: center;
+  border-radius: 10px;
+  background-color: #e4e6e6;
+  border: none;
+}
+.notification {
+  color: white;
 }

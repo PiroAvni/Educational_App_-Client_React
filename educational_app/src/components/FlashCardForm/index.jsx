@@ -178,14 +178,14 @@ const FlashcardForm = () => {
             className='sign-btn2 '
             onClick={handleAddFlashcard}
           >
-            Add Flashcard
+            <p className='started-button2'>Add Flashcard</p>
           </button>
           <button type='button' className='sign-btn2 ' onClick={handleSubmit}>
-            Submit
+            <p className='started-button2'>Submit</p>
           </button>
         </div>
       </form>
-      {notification && <p>{notification}</p>}
+      {notification && <p className='notification'>{notification}</p>}
     </div>
   )
 }
