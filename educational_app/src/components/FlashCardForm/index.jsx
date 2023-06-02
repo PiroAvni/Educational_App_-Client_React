@@ -117,48 +117,58 @@ const FlashcardForm = () => {
             type='text'
             value={category}
             onChange={(e) => setCategory(e.target.value)}
+            className='input-add '
           />
         </div>
         <div>
-          <label>Deck Title:</label>
+          <label className='category-title-description'>Deck Title:</label>
           <input
             type='text'
             value={deckTitle}
             onChange={(e) => setDeckTitle(e.target.value)}
+            className='input-add '
           />
         </div>
         <div>
-          <label>Description:</label>
+          <label className='category-title-description'>Description:</label>
           <input
             type='text'
             value={description}
             onChange={(e) => setDescription(e.target.value)}
+            className='input-add '
           />
         </div>
-        <h3>Flashcards:</h3>
+
         {flashcards.map((flashcard, index) => (
           <div key={index}>
             <label>Front:</label>
-            <textarea className ="input-add:focus"
+            <textarea className =" input-add input-add:focus"
               type='text'
               value={flashcard.frontContent}
               onChange={(e) =>
                 handleFlashcardChange(index, 'frontContent', e.target.value)
               }
+             
             />
             <label>Back:</label>
             <textarea
+            className='input-add '
+            />
               type='text'
               value={flashcard.backContent}
               onChange={(e) =>
                 handleFlashcardChange(index, 'backContent', e.target.value)
               }
-            />
+              
           </div>
         ))}
-        <div>
-          <label>Visibility:</label>
-          <select value={visibility} onChange={handleVisibilityChange}>
+        <div className='add'>
+          <label className='category-title-description'>Visibility:</label>
+          <select
+            className='select visiblity'
+            value={visibility}
+            onChange={handleVisibilityChange}
+          >
             <option value='public'>Public</option>
             <option value='private'>Private</option>
           </select>
@@ -172,7 +182,7 @@ const FlashcardForm = () => {
         </button>
         </div>
       </form>
-      {notification && <p>{notification}</p>}
+      {notification && <p className='notification'>{notification}</p>}
     </div>
   )
 }
