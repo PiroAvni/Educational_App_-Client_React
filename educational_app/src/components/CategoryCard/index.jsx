@@ -3,20 +3,21 @@ import { useNavigate, Link, useParams } from 'react-router-dom';
 import { Container, Card} from 'react-bootstrap';
 import './style.css'
 
-const CategoryCard = ( { name, decks} ) => {
+const CategoryCard = ( { name} ) => {
 
-    console.log('cat card:', decks)
+    // console.log('cat card:', name)
    
 
-    const ids = decks.map((item)=> item.categoryID._id)
+    // const ids = decks.filter((item)=> item.categoryID._id === name)
 
-    console.log('IDS:',ids)
+
 
   let navigate =useNavigate()
-    const handleDeckClick = (ids) => {
-    
-      navigate(`/deck/${ids}`);
+    const handleDeckClick = () => {
+    const categoryId = name
+      navigate(`/deck/${categoryId}`);
     };
+    
   return (
     <div className=' py-5 Deck'>
     <Container className='d-flex justify-content-center deck-container'>

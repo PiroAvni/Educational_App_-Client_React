@@ -39,7 +39,7 @@ console.log(userInfo._id)
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name: category,slug }),
+        body: JSON.stringify({ name: category, slug }),
       });
       const categoryData = await categoryResponse.json();
       console.log(categoryData);
