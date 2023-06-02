@@ -60,11 +60,11 @@ const Header = () => {
                       <BiBookAdd /> Add Flashcards
                     </Nav.Link>
                   </LinkContainer>
-                  <LinkContainer to='/dashboard'>
+                  {/* <LinkContainer to='/dashboard'>
                     <Nav.Link>
                        <TbCards/> Flashcards
                     </Nav.Link>
-                  </LinkContainer>
+                  </LinkContainer> */}
                   <LinkContainer to='/GenericFlashCard'>
                     <Nav.Link>
                        <TbCards/> Generic FlashCards

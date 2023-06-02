@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import slugify from 'slugify'
+import './style.css'
 
 const FlashcardForm = () => {
   const [flashcards, setFlashcards] = useState([
@@ -33,7 +34,7 @@ const FlashcardForm = () => {
     try {
       const slug = slugify(category, { lower: true })
 
-      const slug = slugify(category, { lower: true });
+   
       
       const categoryResponse = await fetch("http://localhost:5000/api/categories", {
         method: "POST",
@@ -107,11 +108,11 @@ const FlashcardForm = () => {
   }
 
   return (
-    <div>
-      <h2>Add Flashcard</h2>
+    <div className='Add-flashcard-container'>
+      <h2 className='Add-Title'>Add Flashcard</h2>
       <form>
         <div>
-          <label>Category:</label>
+          <label className='category-title-description'>Category:</label>
           <input
             type='text'
             value={category}
@@ -138,7 +139,7 @@ const FlashcardForm = () => {
         {flashcards.map((flashcard, index) => (
           <div key={index}>
             <label>Front:</label>
-            <input
+            <textarea className ="input-add:focus"
               type='text'
               value={flashcard.frontContent}
               onChange={(e) =>
@@ -146,7 +147,7 @@ const FlashcardForm = () => {
               }
             />
             <label>Back:</label>
-            <input
+            <textarea
               type='text'
               value={flashcard.backContent}
               onChange={(e) =>
@@ -162,12 +163,14 @@ const FlashcardForm = () => {
             <option value='private'>Private</option>
           </select>
         </div>
-        <button type='button' onClick={handleAddFlashcard}>
+        <div className='button-container'>
+        <button  className="sign-btn2"  type='button' onClick={handleAddFlashcard}>
           Add Flashcard
         </button>
-        <button type='button' onClick={handleSubmit}>
+        <button className="sign-btn2" type='button' onClick={handleSubmit}>
           Submit
         </button>
+        </div>
       </form>
       {notification && <p>{notification}</p>}
     </div>
