@@ -28,6 +28,9 @@
   padding-top: 10px;
   transition: all 0.4s ease-in-out;
   border: none !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .sign-btn:hover,
