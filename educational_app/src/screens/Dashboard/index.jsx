@@ -25,20 +25,17 @@ function DashBoard() {
     fetchCategory()
   }, [])
 
-  // const handleDeckClick = (categoryId) => {
-  //   navigate(`/deck/${categoryId}`);
-  // };
+  const uniqueCategories = categories
+    ? [...new Set(categories.map((item) => item.categoryID?._id))]
+    : []
 
-  const uniqueCategories = [
-    ...new Set(categories.map((item) => item.categoryID._id)),
-  ]
-  // console.log('uq', item)
   return (
     <>
       <div className='dashboard-container'>
         <div className='avatar'>
           <img className='avatar-img' src={avatar} alt='Profile image' />
         </div>
+
         <h1 className='dashboard-title' id='name'>
           Welcome {userInfo.name}
         </h1>
@@ -47,18 +44,19 @@ function DashBoard() {
         {/* <SearchForm /> */}
         <div className='dashboard-categories-container'>
           {uniqueCategories.map((categoryId, idx) => {
-            const categoryDeck = categories.find(
-              (item) => item.categoryID._id === categoryId
+            const categoryDecks = categories.filter(
+              (item) => item.categoryID?._id === categoryId
             )
-            if (categoryDeck) {
+            if (categoryDecks.length > 0) {
               return (
                 <CategoryCard
                   key={idx}
                   name={categoryId}
-                  categories={categories}
+                  categories={categoryDecks}
                 />
               )
             }
+            return null
           })}
         </div>
       </div>

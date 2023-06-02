@@ -21,7 +21,12 @@ const FlashCards = () => {
     const fetchFlashcards = async () => {
       try {
         const response = await axios.get('http://localhost:5000/api/cards')
-        setFlashcards(response.data)
+        console.log(response.data)
+        const filteredFlashcards = response.data.filter(
+          (card) => card.categoryID._id === id
+        )
+
+        setFlashcards(filteredFlashcards)
       } catch (error) {
         console.error(error)
       }
@@ -29,8 +34,6 @@ const FlashCards = () => {
 
     fetchFlashcards()
   }, [])
-
-  const filteredFlashcards = flashcards.filter((card) => card.deckID._id === id)
 
   console.log('FLASHCARDS', flashcards)
 
@@ -65,11 +68,13 @@ const FlashCards = () => {
   return (
     <div className='flashcards-container'>
       <h1>Flashcard App</h1>
-      {flashcards.length > 0 ? (
-        <Flashcard flashcards={filteredFlashcards} />
-      ) : (
-        <p>No flashcards available</p>
-      )}
+
+      {
+        flashcards.length > 0 && <Flashcard flashcards={flashcards} />
+        // ) : (
+        //   <p>No flashcards available</p>
+        // )
+      }
 
       <button onClick={() => handleReview({ cardId: 'card1' })}>
         Review Card 1
