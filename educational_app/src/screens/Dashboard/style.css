@@ -1,7 +1,6 @@
 /* dashboard style */
 
 .dashboard-container {
-  border: 1px solid white;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,13 +9,13 @@
 }
 
 .flashcard-options {
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }
 
 .flashcard-option {
-  margin-top: .25rem;
+  margin-top: 0.25rem;
   color: #555;
-  font-size: .75rem;
+  font-size: 0.75rem;
 }
 
 .flashcard-option:first-child {
@@ -25,8 +24,8 @@
 
 .avatar-img {
   margin-top: 4rem;
-  height: 8em;
-  width: 8rem;
+  height: 13em;
+  width: 15rem;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -38,41 +37,37 @@
 
 .dashboard-title {
   color: #fff;
+  margin-top: 20px;
 }
-
 
 .dashboard-decks-container {
   display: flex;
   flex-direction: row;
 }
-  .flashcard-options {
-    margin-top: .5rem;
-  }
-  
-  .flashcard-option {
-    margin-top: .25rem;
-    color: #555;
-    font-size: .75rem;
-  }
-  
-  .flashcard-option:first-child {
-    margin-top: 0;
-  }
+.flashcard-options {
+  margin-top: 0.5rem;
+}
 
-  .avatar-img{
-    margin-top: 4rem;
-    height:8rem;
-    width: 8rem;
-  }
-  .dashboard-description{
-    color:#fff;
-  }
-  .dashboard-title{
-    color: #fff;
-  }
-  .dashboard-categories-container{
-    display: flex;
-    flex-direction: row;
-  }
- 
+.flashcard-option {
+  margin-top: 0.25rem;
+  color: #555;
+  font-size: 0.75rem;
+}
 
+.flashcard-option:first-child {
+  margin-top: 0;
+}
+
+.dashboard-description {
+  color: #fff;
+}
+.dashboard-title {
+  color: #fff;
+  font-weight: 900;
+  margin-top: 80px;
+}
+.dashboard-categories-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: -265px;
+}
