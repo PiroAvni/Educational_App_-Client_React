@@ -8,6 +8,8 @@ import Loader from '../../components/Loader'
 import { useUpdateUserMutation } from '../../slices/usersApiSlice/usersApiSlice'
 import { setCredentials } from '../../slices/authSlice/authSlice'
 import { InputBox } from '../../components'
+import logo from '../../../public/image/iconprofile.png'
+import './style.css'
 
 const ProfileScreen = () => {
   const [email, setEmail] = useState('')
@@ -48,29 +50,43 @@ const ProfileScreen = () => {
   }
   return (
     <FormContainer>
-      <h1>Update Profile</h1>
+      <h1 className='sign-in-title'>Update Profile</h1>
 
-      <Form onSubmit={submitHandler}>
+      <Form className='form-container2' onSubmit={submitHandler}>
+        <div>
+          <img
+            style={{
+              width: '200px',
+              height: '200px',
+              borderRadius: '50%',
+              objectFit: 'cover',
+            }}
+            src={logo}
+          />
+        </div>
+
         <Form.Group className='my-2' controlId='name'>
-          <Form.Label>Name</Form.Label>
+          {/* <Form.Label>Name</Form.Label> */}
           <Form.Control
             type='name'
             placeholder='Enter name'
             value={name}
             onChange={(e) => setName(e.target.value)}
+            className='sign-in-up'
           ></Form.Control>
         </Form.Group>
         <Form.Group className='my-2' controlId='email'>
-          <Form.Label>Email Address</Form.Label>
+          {/* <Form.Label>Email Address</Form.Label> */}
           <Form.Control
             type='email'
             placeholder='Enter email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            className='sign-in-up'
           ></Form.Control>
         </Form.Group>
         <Form.Group className='my-2' controlId='password'>
-          <Form.Label>Password</Form.Label>
+          {/* <Form.Label>Password</Form.Label> */}
           <InputBox
             type='null'
             placeholder='Enter password'
@@ -78,9 +94,8 @@ const ProfileScreen = () => {
             onChange={(e) => setPassword(e.target.value)}
           ></InputBox>
         </Form.Group>
-
         <Form.Group className='my-2' controlId='confirmPassword'>
-          <Form.Label>Confirm Password</Form.Label>
+          {/* <Form.Label>Confirm Password</Form.Label> */}
           <InputBox
             type='password'
             placeholder='Confirm password'
@@ -88,9 +103,8 @@ const ProfileScreen = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
           ></InputBox>
         </Form.Group>
-
-        <Button type='submit' variant='primary' className='mt-3'>
-          Update
+        <Button type='submit' variant='primary' className='sign-btn'>
+          <p className='started-button'> Update</p>
         </Button>
       </Form>
     </FormContainer>

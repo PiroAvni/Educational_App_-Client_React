@@ -6,6 +6,8 @@ function DashBoard() {
   const [flashcards, setFlashcards] = useState([])
   const [categories, setCategories] = useState([])
 
+  const [count, setCount] = useState(0)
+
   const categoryEl = useRef()
   const amountEl = useRef()
 
@@ -51,6 +53,11 @@ function DashBoard() {
       })
   }
 
+  // const handleFlipSubmit = () => {
+  //   // Perform other form submission logic
+  //   setFlip(!flip)
+  // }
+
   return (
     <>
       <form className='header' onSubmit={handleSubmit}>
@@ -86,7 +93,10 @@ function DashBoard() {
         </div>
       </form>
       <div className='container'>
-        <FlashcardList flashcards={flashcards} />
+        <p style={{ color: 'white', textAlign: 'center', fontSize: '25px' }}>
+          Amount of cards reviewed: {count}
+        </p>
+        <FlashcardList flashcards={flashcards} setCount={setCount} />
       </div>
     </>
   )
