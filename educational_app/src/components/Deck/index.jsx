@@ -4,8 +4,8 @@ import { Container, Card} from 'react-bootstrap';
 import './style.css'
 
 const Deck = ({ id, deck, name, description, create_date, visibility, category}) => {
-console.log('key',deck._id)
-console.log('deck line 8 ',deck)
+console.log(id, deck, name, description, create_date, visibility, category)
+// console.log('deck line 8 ',deck)
 const navigate = useNavigate()
 
   const formatDate = (date) => {
@@ -16,7 +16,7 @@ const navigate = useNavigate()
     })
   }
     const handleDeckClick = () => {
-      navigate(`/flashcard/${id}`);
+      navigate(`/flashcard/${category.toLowerCase()}`);
     };
 
 
