@@ -106,11 +106,11 @@ const FlashcardForm = () => {
       setNotification('An error occurred while adding the flashcard.')
     }
   }
-
   return (
-    <div className='Add-flashcard-container'>
-      <h2 className='Add-Title'>Add Flashcard</h2>
-      <form>
+    
+   <div>
+      <h2 className=' add-flashcards'>Add Flashcard</h2>
+      <form className='adding-flashcards'>
         <div>
           <label className='category-title-description'>Category:</label>
           <input
@@ -138,28 +138,26 @@ const FlashcardForm = () => {
             className='input-add '
           />
         </div>
-
         {flashcards.map((flashcard, index) => (
-          <div key={index}>
-            <label>Front:</label>
-            <textarea className =" input-add input-add:focus"
+          <div key={index} className='add '>
+            <label className='category-title-description'>Front:</label>
+            <input
               type='text'
               value={flashcard.frontContent}
               onChange={(e) =>
                 handleFlashcardChange(index, 'frontContent', e.target.value)
               }
-             
+              className='input-add '
             />
             <label>Back:</label>
-            <textarea
-            className='input-add '
-            />
+            <input
               type='text'
               value={flashcard.backContent}
               onChange={(e) =>
                 handleFlashcardChange(index, 'backContent', e.target.value)
               }
-              
+              className='input-add '
+            />
           </div>
         ))}
         <div className='add'>
@@ -174,17 +172,23 @@ const FlashcardForm = () => {
           </select>
         </div>
         <div className='button-container'>
-        <button  className="sign-btn2"  type='button' onClick={handleAddFlashcard}>
-          Add Flashcard
-        </button>
-        <button className="sign-btn2" type='button' onClick={handleSubmit}>
-          Submit
-        </button>
+          <button
+            type='button'
+            className='sign-btn2 '
+            onClick={handleAddFlashcard}
+          >
+            <p className='started-button2'>Add Flashcard</p>
+          </button>
+          <button type='button' className='sign-btn2 ' onClick={handleSubmit}>
+            <p className='started-button2'>Submit</p>
+          </button>
         </div>
       </form>
       {notification && <p className='notification'>{notification}</p>}
     </div>
+
   )
 }
+  
 
 export default FlashcardForm
