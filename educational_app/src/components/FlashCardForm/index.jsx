@@ -35,7 +35,7 @@ const FlashcardForm = () => {
       const slug = slugify(category, { lower: true })
 
       const categoryResponse = await fetch(
-        'http://localhost:3000/api/categories',
+        'http://localhost:5000/api/categories',
         {
           method: 'POST',
           headers: {
@@ -65,7 +65,7 @@ const FlashcardForm = () => {
       console.log(deckData)
 
       const cardPromises = flashcards.map((flashcard) => {
-        return fetch('http://localhost:3000/api/cards', {
+        return fetch('http://localhost:5000/api/cards', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

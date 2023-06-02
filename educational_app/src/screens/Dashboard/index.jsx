@@ -12,7 +12,7 @@ function DashBoard() {
   useEffect(() => {
     const fetchCategory = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/cards')
+        const response = await axios.get('http://localhost:5000/api/cards')
         console.log('line20:', response.data)
         setCategories(response.data)
       } catch (error) {
