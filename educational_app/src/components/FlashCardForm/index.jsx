@@ -34,21 +34,20 @@ const FlashcardForm = () => {
     try {
       const slug = slugify(category, { lower: true })
 
-      const categoryResponse = await fetch(
-        'http://localhost:5000/api/categories',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ name: category, slug }),
-        }
-      )
-      const categoryData = await categoryResponse.json()
-      console.log(categoryData)
-
-      const deckResponse = await fetch('http://localhost:5000/api/deck', {
-        method: 'POST',
+   
+      
+      const categoryResponse = await fetch("http://localhost:5000/api/categories", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name: category, slug }),
+      });
+      const categoryData = await categoryResponse.json();
+      console.log(categoryData);
+  
+      const deckResponse = await fetch("http://localhost:5000/api/deck", {
+        method: "POST",
 
         headers: {
           'Content-Type': 'application/json',
@@ -107,10 +106,10 @@ const FlashcardForm = () => {
       setNotification('An error occurred while adding the flashcard.')
     }
   }
-
   return (
-    <div>
-      <h2 className='add-flashcards'>Add Flashcard</h2>
+    
+   <div>
+      <h2 className=' add-flashcards'>Add Flashcard</h2>
       <form className='adding-flashcards'>
         <div>
           <label className='category-title-description'>Category:</label>
@@ -139,7 +138,6 @@ const FlashcardForm = () => {
             className='input-add '
           />
         </div>
-
         {flashcards.map((flashcard, index) => (
           <div key={index} className='add '>
             <label className='category-title-description'>Front:</label>
@@ -188,7 +186,9 @@ const FlashcardForm = () => {
       </form>
       {notification && <p className='notification'>{notification}</p>}
     </div>
+
   )
 }
+  
 
 export default FlashcardForm
