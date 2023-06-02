@@ -34,20 +34,21 @@ const FlashcardForm = () => {
     try {
       const slug = slugify(category, { lower: true })
 
-      const slug = slugify(category, { lower: true });
-      
-      const categoryResponse = await fetch("http://localhost:5000/api/categories", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name: category, slug }),
-      });
-      const categoryData = await categoryResponse.json();
-      console.log(categoryData);
-  
-      const deckResponse = await fetch("http://localhost:5000/api/deck", {
-        method: "POST",
+      const categoryResponse = await fetch(
+        'http://localhost:5000/api/categories',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ name: category, slug }),
+        }
+      )
+      const categoryData = await categoryResponse.json()
+      console.log(categoryData)
+
+      const deckResponse = await fetch('http://localhost:5000/api/deck', {
+        method: 'POST',
 
         headers: {
           'Content-Type': 'application/json',
