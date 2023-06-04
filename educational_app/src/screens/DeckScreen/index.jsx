@@ -1,51 +1,62 @@
-import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
-import axios from 'axios'
-import { Deck } from '../../components'
-import './style.css'
+import React, { useEffect } from 'react';
+import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchDeck } from '../../slices/decks/deckSlice';
+import { Deck } from '../../components';
+import './style.css';
 
 const DeckScreen = () => {
-  const [decks, setDecks] = useState([])
-  const { categoryId } = useParams()
+  const dispatch = useDispatch();
 
-  console.log(categoryId)
+  const navigate = useNavigate();
+
+  const { decks, loading, error } = useSelector((state) => state.decks);
+
+
 
   useEffect(() => {
-    const fetchDecks = async () => {
-      try {
-        const response = await axios.get(`http://localhost:3000/api/deck/`)
-        // console.log(response.data)
-        const filteredDecks = response.data.filter((d) => {
-          // console.log(d.categoryId._id)
-          return d.categoryId._id === categoryId
-        })
-        setDecks(filteredDecks)
-      } catch (error) {
-        console.error(error)
-      }
-    }
+    dispatch(fetchDeck());
+  }, [dispatch]);
 
-    fetchDecks()
-  }, [])
+console.log('DS-13:',decks)
+
+  const handleDeckClick = (decks) => {
+    const deckId = decks._id; // Ensure that _id is correctly extracted from the deck object
+    dispatch(fetchFlashcard(deckId)); // Pass the deck ID to the fetchFlashcard action
+    navigate(`/flashcards/decks/${deckId}`); // Navigate to the flashcard screen with the deck ID
+  };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <div>
       <h1 className='deck-list'>Deck List</h1>
-      {decks.map((deck) => (
-        // <Link to={`/deck/${deck?._id}`} key={deck?._id}>
-        <Deck
-          id={deck?._id}
-          deck={deck?.title}
-          name={deck?.userId?.name}
-          category={deck?.categoryId?.name}
-          description={deck?.description}
-          create_date={deck?.create_date}
-          // visibility={deck?.visibility} // Assuming visibility is a property of the deck object
+      {decks.map((deck,idx) => (
+        // console.log(deck._id , idx)
+        <Deck 
+          key={deck._id}
+          id={deck._id}
+          deck={deck.title}
+          name={deck.userId.name}
+          category={deck.categoryId.name}
+          description={deck.description}
+          create_date={deck.create_date}
+          onClick={() => handleDeckClick(deck)} // Pass the deck ID to handleDeckClick
         />
-        // </Link>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default DeckScreen
+export default DeckScreen;
+
+
+
+
+

@@ -32,11 +32,13 @@ const Flashcard = ({ flashcards }) => {
         <div className={`flashcard ${showSolution ? 'flipped' : ''}`}>
           <div className='front'>
             <h3>Question:</h3>
+            <div divider ></div>
             <p>{flashcards[currentCardIndex].frontContent}</p>
             <button onClick={handleFlip}>Show Solution</button>
           </div>
           <div className='back'>
             <h3>Answer:</h3>
+            <div divider ></div>
             <p>{flashcards[currentCardIndex].backContent}</p>
             <button onClick={handleFlip}>Show Question</button>
           </div>

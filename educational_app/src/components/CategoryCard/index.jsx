@@ -5,8 +5,8 @@ import './style.css'
 
 const CategoryCard = ({ name }) => {
   // console.log('cat card:', name)
-
-  // const ids = decks.filter((item)=> item.categoryID._id === name)
+console.log(name)
+//  const ids = name.filter((item)=> item._id === name)
 
   let navigate = useNavigate()
   const handleDeckClick = () => {

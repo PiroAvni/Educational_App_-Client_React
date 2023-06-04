@@ -3,3 +3,8 @@
     justify-content: center;
     flex-direction: column;
 }
+
+.flashcard-title{
+display: flex;
+justify-content: center;
+}
