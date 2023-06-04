@@ -5,7 +5,7 @@ export const fetchFlashcard = createAsyncThunk(
   'flashcard/fetchFlashcard',
   async (deckId) => {
     console.log('API CALL', deckId);
-    const response = await axios.get(`http://localhost:5000/api/cards/flashcards/decks/${deckId}`);
+    const response = await axios.get(`https://educational-server-qq6d.onrender.com/api/cards/flashcards/decks/${deckId}`);
     return response.data;
   }
 );

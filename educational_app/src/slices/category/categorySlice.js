@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const fetchCategories = createAsyncThunk('dashboard/fetchCategories', async () => {
   try {
-    const response = await axios.get('http://localhost:5000/api/categories/');
+    const response = await axios.get('https://educational-server-qq6d.onrender.com/api/categories/');
     return response.data;
   } catch (error) {
     throw new Error('Failed to fetch categories');
