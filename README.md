@@ -2,6 +2,7 @@
 
 This ia an app that allows users to create and review personalized flashcards. It provides an interactive and customizable learning experience for users to enhance their knowledge and retention of various subjects.
 
+## Deloyed on
 
 https://educational-app.onrender.com
 
