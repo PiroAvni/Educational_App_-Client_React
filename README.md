@@ -62,6 +62,15 @@ During the development and implementation of the flashcard application, it is im
 - React
 - Bootsrap
 
+## Testing Coverage
+
+This project has been thoroughly tested to ensure its functionality and reliability. We have developed a comprehensive suite of tests, which includes unit tests that cover various components and features.
+
+Our testing approach prioritizes high coverage to minimize the chances of undetected issues. Currently, we have achieved an impressive 80% coverage rate for this project. This means that a significant portion of the codebase has been meticulously tested, providing confidence in its stability.
+
+<img width="324" alt="Screenshot 2023-06-04 at 14 58 30" src="https://github.com/PiroAvni/Educational_App_-Client_React/assets/112406576/6d8f6074-50c9-481b-99d3-1d7333d93acc">
+
+
 ## Future features 
 
 - Progress Tracking: Introduce a feature that tracks the user's progress and performance, providing insights into their learning journey. This could include statistics on correct/incorrect answers, time spent on each flashcard, and overall proficiency.
