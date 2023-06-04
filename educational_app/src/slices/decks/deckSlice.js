@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const fetchDeck = createAsyncThunk('decks/fetchDeck', async () => {
   try {
-    const response = await axios.get('http://localhost:5000/api/deck/');
+    const response = await axios.get('https://educational-server-qq6d.onrender.com/api/deck/');
     return response.data;
   } catch (error) {
     throw new Error('Failed to fetch decks');
