@@ -35,11 +35,11 @@ const router = createBrowserRouter(
         <Route path='/profile' element={<ProfileScreen />} />
           <Route path='/dashboard' element={<DashBoard />} /> 
           <Route path='/add-cards' element={<FlashCardScreen />} /> 
-          <Route path='/flashcard/:id' element={<FlashCards />} /> 
+          <Route path='/decks/flashcard/:id' element={<FlashCards />} />
           <Route path='/GenericFlashCard' element={<GenericFlashCard />} /> 
           <Route path='/progress' element={<ProgressScreen />} /> 
           <Route path='/bookmarks' element={<BookMarkScreen />} /> 
-          <Route path= '/deck/:categoryId' element={<DeckScreen />} /> 
+          <Route path= '/deck/:Id' element={<DeckScreen />} /> 
       </Route> 
 
     </Route>

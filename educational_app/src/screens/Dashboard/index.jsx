@@ -1,31 +1,28 @@
-import { useState, useEffect } from 'react'
-import { CategoryCard } from '../../components'
-import { useSelector } from 'react-redux'
-import avatar from '../../../public/image/Profile-image.png'
-import './style.css'
-import axios from 'axios'
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCategories } from '../../slices/category/categorySlice';
+import { CategoryCard } from '../../components';
+import avatar from '../../../public/image/Profile-image.png';
+import './style.css';
 
 function DashBoard() {
-  const [categories, setCategories] = useState([])
-  const { userInfo } = useSelector((state) => state.auth)
+  const dispatch = useDispatch();
+  const { userInfo } = useSelector((state) => state.auth);
+  const { categories, loading, error } = useSelector((state) => state.categories);
 
   useEffect(() => {
-    const fetchCategory = async () => {
-      try {
-        const response = await axios.get('http://localhost:5000/api/cards')
-        console.log('line20:', response.data)
-        setCategories(response.data)
-      } catch (error) {
-        console.error(error)
-      }
-    }
+    dispatch(fetchCategories()); // Dispatch the action creator to fetch categories
+  }, [dispatch]);
 
-    fetchCategory()
-  }, [])
+  const uniqueCategories = categories ? [...new Set(categories.map((item) => item?.name))] : [];
 
-  const uniqueCategories = categories
-    ? [...new Set(categories.map((item) => item.categoryID?._id))]
-    : []
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <>
@@ -37,27 +34,19 @@ function DashBoard() {
           Welcome {userInfo.name}
         </h1>
 
-        {/* <SearchForm /> */}
         <div className='dashboard-categories-container'>
-          {uniqueCategories.map((categoryId, idx) => {
-            const categoryDecks = categories.filter(
-              (item) => item.categoryID?._id === categoryId
-            )
+          {uniqueCategories.map((name, idx) => {
+            const categoryDecks = categories.filter((item) => item.name === name);
             if (categoryDecks.length > 0) {
-              return (
-                <CategoryCard
-                  key={idx}
-                  name={categoryId}
-                  categories={categoryDecks}
-                />
-              )
+              return <CategoryCard key={idx} name={name} />;
             }
-            return null
+            return null;
           })}
         </div>
       </div>
     </>
-  )
+  );
 }
 
-export default DashBoard
+export default DashBoard;
+

@@ -1,4 +1,5 @@
 .deck-card {
-  width: 200px !important;
-  height: 200px !important;
+  width: 400px !important;
+  height: 400px !important;
+  border: 2px solid #feda38 !important;
 }
