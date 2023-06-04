@@ -44,7 +44,7 @@ const FlashcardForm = () => {
 
   const handleSubmit = async () => {
     try {
-      const categoryResponse = await fetch('http://localhost:5000/api/categories', {
+      const categoryResponse = await fetch('https://educational-server-qq6d.onrender.com/api/categories', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ const FlashcardForm = () => {
       const categoryData = await categoryResponse.json();
       console.log(categoryData);
 
-      const deckResponse = await fetch('http://localhost:5000/api/deck', {
+      const deckResponse = await fetch('https://educational-server-qq6d.onrender.com/api/deck', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ const FlashcardForm = () => {
       console.log(deckData);
 
       const cardPromises = flashcards.map((flashcard) => {
-        return fetch('http://localhost:5000/api/cards', {
+        return fetch('https://educational-server-qq6d.onrender.com/api/cards', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
